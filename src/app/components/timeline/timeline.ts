@@ -14,11 +14,11 @@ export class Timeline implements AfterViewInit {
   readonly expandedId = signal<number | null>(null);
 
   readonly milestones = signal([
-    { id: 1, year: '2015', title: 'ARQUITECTURA', desc: 'Formación técnica en diseño y estructuras.' },
-    { id: 2, year: '2019', title: 'MIGRACIÓN', desc: 'Resiliencia y adaptación en un nuevo entorno.' },
-    { id: 3, year: '2023', title: 'HOSTELERÍA', desc: 'Empatía y gestión multicultural en Formentera.' },
-    { id: 4, year: '2026', title: 'SOFTWARE', desc: 'Desarrollo de sistemas escalables y limpios.' },
-    { id: 5, year: '2028', title: 'SOSTENIBILIDAD', desc: 'Compromiso con el diseño sostenible y ético.' }
+    { id: 1, start_year: '2015', end_year: '2017', title: 'Arquitectura', desc: 'Formación técnica en diseño y estructuras.' },
+    { id: 2, start_year: '2015', end_year: '2021', title: 'AGBC', desc: 'Argentina Green Building Council. Office Coordinator.' },
+    { id: 3, start_year: '2021', end_year: 'Actualidad', title: 'Migración', desc: 'Resiliencia y adaptación en un nuevo entorno.' },
+    { id: 4, start_year: '2021', end_year: 'Actualidad', title: 'Hostelería', desc: 'Empatía y gestión multicultural en Formentera.' },
+    { id: 5, start_year: '2026', end_year: 'Actualidad', title: 'SOFTWARE', desc: 'Desarrollo de sistemas escalables y limpios.' }
   ]);
 
   ngAfterViewInit(): boolean {
