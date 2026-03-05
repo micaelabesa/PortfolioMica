@@ -1,11 +1,14 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/PortfolioMica",
-  "framework": "angular",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "^/.*\\.[^/]*$",
+      "dest": "/$0"
+    },
+    {
+      "src": "^/(?!api).*",
+      "dest": "/index.html"
     }
   ]
 }
