@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=JetBrains+Mono:wght@300;500&display=swap');
+
+:root {
+    /* Paleta Técnica-Elegante */
+    --color-paper: #F2EFE9; 
+    --color-ink: #1C1F22; 
+    --color-accent: #2D5A27; 
+    --color-line: rgba(28, 31, 34, 0.1); 
+
+    /* Tipografías */
+    --font-main: 'JetBrains Mono', monospace;
+    --font-serif: 'Fraunces', serif;
+
+    /* Spacing (Base 8px) */
+    --space-8: 8px;
+    --space-16: 16px;
+    --space-32: 32px;
+}
+
+body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-main);
+    margin: 0;
+    transition: background-color 0.4s ease;
+
+    /* Grilla muy sutil, casi imperceptible */
+    background-image: radial-gradient(var(--color-line) 2px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+}
+
+body.sustainable-mode {
+    --color-paper: #121412;
+    --color-ink: #D9D4CC;
+    --color-accent: #81C784;
+    --color-line: rgba(217, 212, 204, 0.05);
+}

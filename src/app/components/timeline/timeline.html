@@ -1,0 +1,21 @@
+<!-- lograr que la línea envuelva el texto. La "curva que envuelve": quiero que la línea no sea solo un adorno, sino el contenedor o la guía física del texto. Refactorizar el diseño para que la línea realice ese recorrido de "serpiente" (vertical -> curva -> horizontal -> curva -> vertical) y que la animación dependa del scroll (revelado) y del hover (interacción).Línea "Envolvente": El comando d del SVG ahora usa H (Horizontal) y V (Vertical) con Q (Quadratic curves) para crear esquinas redondeadas que parecen abrazar el espacio donde van las tarjetas. -->
+
+<div class="timeline-container">
+    @for (item of milestones(); track item.id; let i = $index) {
+    <div class="timeline-block" [class.is-reversed]="i % 2 !== 0" [class.is-expanded]="expandedId() === item.id">
+
+        <div class="card-content" (click)="toggleExpand(item.id)">
+            <div class="card-header">
+                <span class="card-id">{{ item.year }} // ID_0{{ item.id }}</span>
+                <h3 class="card-title">{{ item.title }}</h3>
+                <span class="mobile-arrow"></span>
+            </div>
+
+            <div class="card-body">
+                <p class="card-description">{{ item.desc }}</p>
+            </div>
+        </div>
+
+    </div>
+    }
+</div>

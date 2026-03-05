@@ -1,0 +1,52 @@
+/* src/app/components/theme-toggle/theme-toggle.css */
+:host {
+    display: block;
+    --btn-height: 40px;
+    /* 8px * 5 */
+}
+
+.blueprint-btn {
+    height: var(--btn-height);
+    padding: 0 16px;
+    /* 8px * 2 */
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+    /* Look técnico */
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 180ms ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.blueprint-btn:hover {
+    background: rgba(45, 90, 39, 0.1);
+    /* Tech Green con opacidad */
+}
+
+.active-mode {
+    border-color: var(--tech-green);
+    color: var(--tech-green);
+}
+
+.scale-indicator {
+    display: flex;
+    gap: 4px;
+}
+
+.line {
+    width: 1px;
+    height: 8px;
+    background: currentColor;
+}
+
+/* Micro-detalle: la línea central es más larga como en un escalímetro */
+.line:nth-child(2) {
+    height: 12px;
+}

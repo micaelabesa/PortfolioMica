@@ -1,0 +1,61 @@
+<footer class="footer-shell">
+    <div class="footer-container">
+        <!-- SECCIÓN SUPERIOR: CTA + LINKS -->
+        <div class="footer-top">
+            <div class="cta-zone">
+                <h6 class="footer-heading">¿Hablamos?</h6>
+                <p class="footer-subtext">Proyectos, consultoría o simplemente charla técnica.</p>
+                <a href="mailto:micaela.besasso@hotmail.com" class="footer-cta">micaela.besasso@hotmail.com</a>
+            </div>
+
+            <nav class="footer-nav">
+                <div class="nav-column">
+                    <h4 class="nav-title">NAVEGACIÓN</h4>
+                    <ul class="nav-list">
+                        <li><a routerLink="/cimientos" class="nav-link">CIMIENTOS</a></li>
+                        <li><a routerLink="/proyectos" class="nav-link">ESTRUCTURAS</a></li>
+                        <li><a href="#contact" class="nav-link">CONTACTO</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-column">
+                    <h4 class="nav-title">SOCIAL</h4>
+                    <ul class="nav-list">
+                        <li><a href="https://github.com/micaelabesa" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/micaela-besasso-" target="_blank" rel="noopener" class="nav-link">LinkedIn</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-column">
+                    <h4 class="nav-title">RECURSOS</h4>
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link">Manifiesto</a></li>
+                        <li><a href="#" class="nav-link">Blog</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- DIVISOR -->
+        <div class="footer-divider"></div>
+
+        <!-- SECCIÓN INFERIOR: METADATA -->
+        <div class="footer-bottom">
+            <div class="footer-meta">
+                <span class="tech-stack">{{ techStack() }}</span>
+                <span class="build-info">v{{ version() }} • BUILD_{{ buildDate() }}</span>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; {{ currentYear() }} • MICAELA BESASSO • Diseño y Código</p>
+            </div>
+
+            <div class="footer-actions">
+                <button class="footer-link-btn" (click)="scrollToTop()">
+                    ↑ VOLVER_AL_INICIO
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>

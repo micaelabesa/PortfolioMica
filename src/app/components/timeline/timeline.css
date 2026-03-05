@@ -1,0 +1,302 @@
+/* .timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+    overflow-anchor: none;
+}
+
+.snake-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.milestones-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 250px;
+}
+
+.milestone-row {
+    display: flex;
+    width: 100%;
+    padding: 0 10%;
+}
+
+.milestone-row.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.milestone-card {
+    flex: 0 0 350px;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+
+.milestone-row:nth-child(even) {
+    justify-content: flex-end;
+}
+
+.milestone-row:nth-child(odd) {
+    justify-content: flex-start;
+}
+
+.milestone-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-inner {
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+    padding: 30px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-inner:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    cursor: crosshair;
+}
+
+.meta {
+    font-family: var(--font-primary);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.milestone-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+}
+
+.milestone-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.row-spacer {
+    flex: 1.2;
+}
+
+@media (max-width: 768px) {
+    .svg-layer {
+        display: none;
+    }
+
+    .milestone-row,
+    .milestone-row.row-reverse {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .milestone-card {
+        max-width: 100%;
+    }
+}
+
+.milestone-card.is-visible .card-inner {
+    animation: subtle-lift 1.5s ease-out forwards;
+}
+
+@keyframes subtle-lift {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.card-inner:hover h3 {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+} */
+
+/* Contenedor Principal */
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bloque individual de la serpiente */
+.timeline-block {
+    display: flex;
+    width: 100%;
+    position: relative;
+    /* El margen negativo une las piezas de la serpiente sin dejar huecos */
+    margin-bottom: -40px;
+}
+
+/* La tarjeta que genera la línea envolvente */
+.card-content {
+    position: relative;
+    z-index: 2;
+    width: 65%;
+    padding: 50px;
+    background-color: transparent;
+    /* Configuración de la línea (naranja/verde grueso) */
+    border: 40px solid var(--color-accent);
+    border-right: none;
+    border-radius: 100px 0 0 100px;
+    box-sizing: border-box;
+}
+
+/* Inversión para crear el efecto S */
+.timeline-block.is-reversed {
+    justify-content: flex-end;
+}
+
+.timeline-block.is-reversed .card-content {
+    border-left: none;
+    border-right: 40px solid var(--color-accent);
+    border-radius: 0 100px 100px 0;
+}
+
+/* Estilos de Texto (Clases limpias) */
+.card-id {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 12px;
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.card-description {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.mobile-arrow {
+    display: none;
+}
+
+/* Oculto en Desktop */
+
+/* --- RESPONSIVE CELULARES (ESTILO IMAGEN NARANJA) --- */
+@media (max-width: 600px) {
+    .timeline-container {
+        padding: 40px 15px;
+        border-left: 2px solid var(--color-accent);
+        /* Línea vertical fina continua */
+        margin-left: 30px;
+    }
+
+    .timeline-block {
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .card-content {
+        width: 100%;
+        border: none !important;
+        /* Eliminamos la 'U' en móvil */
+        border-bottom: 1px solid rgba(45, 90, 39, 0.2) !important;
+        border-radius: 0 !important;
+        padding: 20px 0;
+        margin: 0;
+    }
+
+    /* El punto/círculo que decora la línea vertical */
+    .card-content::before {
+        content: "";
+        position: absolute;
+        left: -39px;
+        top: 25px;
+        width: 16px;
+        height: 16px;
+        background: var(--color-accent);
+        border-radius: 50%;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-arrow {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid var(--color-accent);
+        border-bottom: 2px solid var(--color-accent);
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+    }
+
+    /* Gestión del Acordeón */
+    .card-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s;
+        opacity: 0;
+    }
+
+    .is-expanded .card-body {
+        max-height: 500px;
+        /* Suficiente para el texto */
+        opacity: 1;
+        padding-top: 15px;
+    }
+
+    .is-expanded .mobile-arrow {
+        transform: rotate(-135deg);
+        /* Flecha hacia arriba */
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* Estilos de texto base */
+.card-id {
+    display: block;
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 12px;
+    color: var(--color-accent);
+}
+
+.card-title {
+    font-family: 'Fraunces', serif;
+    margin: 5px 0;
+}
+
+.card-description {
+    font-size: 15px;
+    line-height: 1.6;
+}

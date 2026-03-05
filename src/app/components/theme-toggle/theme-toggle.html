@@ -1,0 +1,16 @@
+<button type="button" (click)="toggle()" class="blueprint-btn" [class.active-mode]="isSustainable()"
+    aria-label="Alternar modo sostenible" [attr.aria-pressed]="isSustainable()">
+    <span class="technical-label">
+        @if (isSustainable()) {
+        SOSTENIBLE
+        } @else {
+        ESTÁNDAR
+        }
+    </span>
+
+    <div class="scale-indicator" aria-hidden="true">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</button>

@@ -1,0 +1,151 @@
+<!-- <div class="home-container">
+    <section class="hero-grid">
+
+        <div class="hero-content">
+            <header>
+                <div class="status-tag">STATUS: ACTIVE_DEVELOPER</div>
+                <h3 class="main-title">
+                    Software <span class="main-subtitle">sostenible</span><span class="plus-sign">+</span><br>
+                    Arquitectura <span class="main-subtitle">centrada en el Usuario</span>
+                </h3>
+            </header>
+
+            <p class="manifesto">
+            Para mí, programar es como construir: si los cimientos fallan, la estética sobra. Por eso diseño con <strong>sostenibilidad técnica y estructuras limpias,</strong> usando la disciplina del diseño estructural y ese 'ojo' especial para el usuario que solo
+            te da el trato directo con la gente.
+            </p> -->
+
+<!-- src/app/pages/home/home.html -->
+<div class="home-container">
+    <section class="hero-grid">
+
+        <!-- HERO CONTENT -->
+        <div class="hero-content">
+            <header class="hero-header">
+                <div class="status-tag">
+                    <span class="pulse-dot"></span>
+                    STATUS: ACTIVE_DEVELOPER
+                </div>
+                <h1 class="main-title">
+                    Arquitectura <span class="plus-sign">+</span><br>
+                    Software
+                </h1>
+            </header>
+
+            <p class="manifesto">
+                Diseño productos digitales con enfoque en <strong>sostenibilidad técnica</strong> y estructuras limpias.
+                Tres años en arquitectura me enseñaron a proyectar; el código me enseñó a construir.
+            </p>
+<!-- CIMIENTOS PREVIEW -->
+<div class="cta-section">
+    <div class="cta-group">
+        <a routerLink="/cimientos" class="primary-btn">
+            <span>DESCUBRE MIS CIMIENTOS</span>
+            <span class="arrow">→</span>
+        </a>
+        <a href="#contact" class="secondary-btn">
+            <span>CONTACTO</span>
+            <span class="arrow">↓</span>
+        </a>
+    </div>
+</div>
+
+<!-- SKILLS QUICK VIEW -->
+<div class="quick-skills">
+    <span class="skill-badge">Angular</span>
+    <span class="skill-badge">TypeScript</span>
+    <span class="skill-badge">UX/Architecture</span>
+    <span class="skill-badge">Sostenibilidad</span>
+</div>
+</div>
+
+<!-- HERO METRICS (DEFERRED) -->
+<aside class="hero-metrics">
+    @defer (on timer(300ms)) {
+    <div class="metrics-card">
+        <div class="card-header">
+            <h3 class="card-label">DATA_DASHBOARD</h3>
+            <span class="card-status">LIVE</span>
+        </div>
+
+        <div class="stats-list">
+            <div class="stat-block">
+                <span class="stat-label">FORMACIÓN</span>
+                <div class="progress-container">
+                    <div class="progress-bar" [style.--value]="'85%'"></div>
+                    <span class="progress-text">85%</span>
+                </div>
+            </div>
+
+            <div class="stat-block">
+                <span class="stat-label">PROYECTOS</span>
+                <span class="stat-value large">04</span>
+            </div>
+
+            <div class="stat-block">
+                <span class="stat-label">EXPERIENCIA</span>
+                <span class="stat-value">+8 años</span>
+            </div>
+
+            <div class="stat-block">
+                <span class="stat-label">FOCUS</span>
+                <span class="stat-focus">Código Sostenible</span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <span class="last-update">{{ lastUpdate() }}</span>
+        </div>
+    </div>
+    } @placeholder {
+    <div class="skeleton-loader">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+    }
+</aside>
+
+</section>
+
+<!-- FEATURED SECTION -->
+<section class="featured-work">
+    <div class="featured-header">
+        <h2>PROYECTOS_DESTACADOS</h2>
+        <a routerLink="/proyectos" class="see-all">VER TODO →</a>
+    </div>
+
+    <div class="projects-grid">
+        @for (project of featuredProjects(); track project.id) {
+        <div class="project-card" [class.is-featured]="project.featured">
+            <div class="project-label">{{ project.year }}</div>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-desc">{{ project.description }}</p>
+            <div class="project-tags">
+                @for (tag of project.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+                }
+            </div>
+            <a href="#" class="project-link">Explorar →</a>
+        </div>
+        }
+    </div>
+</section>
+
+<!-- MANIFESTO SECTION -->
+<section class="manifesto-section">
+    <div class="manifesto-content">
+        <h2>¿Por qué hago esto?</h2>
+        <p>
+            No es solo código. Es <strong>resolver problemas reales</strong> con herramientas que duran.
+            Cada línea es un pequeño acto de responsabilidad con quien la usa.
+        </p>
+        <p>
+            Después de proyectar casas sostenibles, construir hoteles en islas pequeñas y gestionar equipos
+            multiculturales,
+            aprendí que <strong>la tecnología es un servicio al ser humano</strong>, no al revés.
+        </p>
+    </div>
+    </section>
+
+    
+</div>

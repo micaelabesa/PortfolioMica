@@ -1,0 +1,282 @@
+/* src/app/components/footer/footer.css */
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.footer-shell {
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-line);
+    margin-top: 120px;
+    padding: var(--space-64) var(--space-32);
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-64);
+}
+
+/* ========== SECCIÓN SUPERIOR ========== */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-64);
+    align-items: start;
+}
+
+/* --- CTA Zone --- */
+.cta-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.footer-heading {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.footer-subtext {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    color: var(--color-accent);
+    text-decoration: none;
+    padding: 10px 10px;
+    border: 1px solid var(--color-accent);
+    border-radius: 7px;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-top: 2px;
+}
+
+.footer-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-paper);
+    transform: translateX(4px);
+}
+
+/* --- Navigation Columns --- */
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-48);
+}
+
+.nav-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}
+
+.nav-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-accent);
+    margin: 0;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--color-accent);
+    padding-left: 8px;
+}
+
+.nav-link::before {
+    content: '→';
+    position: absolute;
+    left: -12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+}
+
+/* ========== DIVISOR ========== */
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(to right,
+            var(--color-line),
+            var(--color-accent),
+            var(--color-line));
+    opacity: 0.3;
+}
+
+/* ========== SECCIÓN INFERIOR ========== */
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-32);
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.6;
+}
+
+.tech-stack {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.build-info {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* --- Copyright --- */
+.footer-copyright {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.sustainability-note {
+    font-size: 0.8rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid currentColor;
+}
+
+.badge.sustainable {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: rgba(45, 90, 39, 0.1);
+}
+
+/* --- Footer Actions --- */
+.footer-actions {
+    text-align: right;
+}
+
+.footer-link-btn {
+    background: none;
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.footer-link-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(45, 90, 39, 0.05);
+    transform: translateY(-2px);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .footer-shell {
+        padding: var(--space-32) var(--space-16);
+        margin-top: 60px;
+    }
+
+    .footer-container {
+        gap: var(--space-32);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: var(--space-32);
+    }
+
+    .footer-nav {
+        grid-template-columns: 1fr;
+        gap: var(--space-24);
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: var(--space-24);
+        text-align: center;
+    }
+
+    .footer-meta {
+        align-items: center;
+    }
+
+    .footer-actions {
+        text-align: center;
+    }
+
+    .footer-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ========== MODO SOSTENIBLE ========== */
+body.sustainable-mode .footer-shell {
+    background: linear-gradient(135deg,
+            var(--color-paper) 0%,
+            rgba(45, 90, 39, 0.02) 100%);
+}
+
+body.sustainable-mode .footer-divider {
+    background: linear-gradient(to right,
+            var(--color-accent),
+            var(--color-accent),
+            transparent);
+    opacity: 0.2;
+}
