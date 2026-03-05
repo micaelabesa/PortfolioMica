@@ -1,6 +1,4 @@
-// src/app/pages/home/home.ts
 import { Component, inject, ChangeDetectionStrategy, computed, signal } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UI } from '../../services/ui';
 

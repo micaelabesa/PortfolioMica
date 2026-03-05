@@ -13,6 +13,9 @@
 
 .image-wrapper {
     position: relative;
+    width: 100%;
+    max-width: 350px;
+    /* En mobile: más pequeña */
 }
 
 .portrait {
@@ -20,6 +23,20 @@
     height: auto;
     filter: grayscale(20%);
     border: 1px solid var(--color-line);
+    border-radius: 8px;
+    transition: filter 0.3s ease;
+}
+
+.portrait:hover {
+    filter: grayscale(4%);
+}
+
+/* En desktop: un poco más grande */
+@media (min-width: 992px) {
+    .image-wrapper {
+        max-width: 400px;
+        /* Vuelve al tamaño original en desktop */
+    }
 }
 
 .photo-caption {
