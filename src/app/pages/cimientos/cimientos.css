@@ -1,7 +1,13 @@
 .cimientos-container {
-    padding: var(--space-32) 16px;
-    max-width: 1200px;
+    padding: 50px var(--margin-sides);
+    max-width: var(--max-width);
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .cimientos-container {
+        padding: 32px var(--margin-sides);
+    }
 }
 
 .content-layout {
@@ -21,22 +27,17 @@
 .portrait {
     width: 100%;
     height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     filter: grayscale(20%);
     border: 1px solid var(--color-line);
     border-radius: 8px;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .portrait:hover {
-    filter: grayscale(4%);
-}
-
-/* En desktop: un poco más grande */
-@media (min-width: 992px) {
-    .image-wrapper {
-        max-width: 400px;
-        /* Vuelve al tamaño original en desktop */
-    }
+    filter: grayscale(0%);
+    transform: scale(1.02);
 }
 
 .photo-caption {
@@ -45,18 +46,31 @@
     opacity: 0.5;
 }
 
+.technical-label {
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
 .title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.15;
     margin: 16px 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 .bio {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     max-width: 600px;
     margin-bottom: 32px;
+    opacity: 0.85;
 }
 
 .timeline {
@@ -64,36 +78,29 @@
     padding-top: 24px;
 }
 
-.milestone {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 24px;
-}
-
-.year {
-    font-weight: 600;
-    color: var(--color-accent);
-    font-size: 12px;
-}
-
-.detail strong {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 4px;
-}
-
-.detail p {
-    font-size: 12px;
-    margin: 0;
-    opacity: 0.7;
-}
-
 @media (min-width: 992px) {
     .content-layout {
-        grid-template-columns: 400px 1fr;
+        grid-template-columns: 350px 1fr;
+        gap: 64px;
+        align-items: start;
     }
 
     .cimientos-container {
-        padding: 80px 32px;
+        padding: 64px var(--margin-sides);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .image-wrapper {
+        max-width: 300px;
+    }
+
+    .title {
+        font-size: 1.6rem;
     }
 }

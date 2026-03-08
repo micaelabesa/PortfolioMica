@@ -1,26 +1,30 @@
-/* src/app/components/footer/footer.css */
-
-/* ========== CONTENEDOR PRINCIPAL ========== */
 .footer-shell {
     background: var(--color-paper);
     border-top: 1px solid var(--color-line);
-    margin-top: 120px;
-    padding: var(--space-64) var(--space-32);
+    margin-top: 40px;
+    padding: var(--space-16) var(--margin-sides) 0 var(--margin-sides);
 }
 
 .footer-container {
-    max-width: 1440px;
+    max-width: var(--max-width);
     margin: 0 auto;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-64);
+    gap: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 var(--margin-sides);
+    }
 }
 
 /* ========== SECCIÓN SUPERIOR ========== */
 .footer-top {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-64);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-32);
     align-items: start;
 }
 
@@ -42,7 +46,7 @@
     font-size: 0.7rem;
     opacity: 0.7;
     line-height: 1.5;
-    margin: 0;
+    margin: 0;  
 }
 
 .footer-cta {
@@ -59,7 +63,9 @@
     border-radius: 7px;
     transition: all 0.3s ease;
     width: fit-content;
+    /* ← CAMBIO: auto → fit-content */
     margin-top: 2px;
+    white-space: nowrap;
 }
 
 .footer-cta:hover {
@@ -72,7 +78,7 @@
 .footer-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-48);
+    gap: var(--space-32);
 }
 
 .nav-column {
@@ -136,15 +142,17 @@
             var(--color-accent),
             var(--color-line));
     opacity: 0.3;
+    margin: 3px 0 3px 0;
 }
 
 /* ========== SECCIÓN INFERIOR ========== */
 .footer-bottom {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-32);
+    gap: 0;
     align-items: center;
-    font-size: 0.85rem;
+    font-size: 0.5rem;
+    margin-bottom: 0;
 }
 
 .footer-meta {
@@ -175,7 +183,7 @@
 
 .footer-copyright p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     opacity: 0.7;
 }
 
@@ -186,7 +194,7 @@
 .badge {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 2px;
+    border-radius: 7px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     font-weight: 700;
@@ -209,13 +217,13 @@
     background: none;
     border: 1px solid var(--color-line);
     color: var(--color-ink);
-    padding: 8px 16px;
+    padding: 6px 16px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 2px;
+    border-radius: 7px;
 }
 
 .footer-link-btn:hover {
@@ -228,27 +236,49 @@
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .footer-shell {
-        padding: var(--space-32) var(--space-16);
-        margin-top: 60px;
+        padding: var(--space-16) var(--margin-sides);
+        margin-top: 0px;
     }
 
     .footer-container {
-        gap: var(--space-32);
+        gap: var(--space-16);
     }
 
     .footer-top {
         grid-template-columns: 1fr;
-        gap: var(--space-32);
+        gap: var(--space-16);
     }
 
     .footer-nav {
         grid-template-columns: 1fr;
-        gap: var(--space-24);
+        gap: var(--space-16);
+    }
+
+    .nav-column {
+        margin-bottom: var(--space-8);
+        padding-bottom: var(--space-8);
+        border-bottom: 1px solid var(--color-line);
+    }
+
+    .nav-column:last-child {
+        border-bottom: none;
+    }
+
+    .cta-zone {
+        margin-bottom: var(--space-8);
+        padding-bottom: var(--space-8);
+        border-bottom: 1px solid var(--color-line);
+    }
+
+    /* UNA SOLA REGLA DE .footer-cta EN MOBILE */
+    .footer-cta {
+        width: fit-content;
+        justify-content: flex-start;
     }
 
     .footer-bottom {
         grid-template-columns: 1fr;
-        gap: var(--space-24);
+        gap: var(--space-16);
         text-align: center;
     }
 
@@ -258,11 +288,6 @@
 
     .footer-actions {
         text-align: center;
-    }
-
-    .footer-cta {
-        width: 100%;
-        justify-content: center;
     }
 }
 

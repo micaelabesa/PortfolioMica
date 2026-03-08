@@ -1,1 +1,209 @@
-<p>contact works!</p>
+<div class="contact-container">
+    <!-- HEADER SECTION -->
+    <section class="contact-header">
+        <div class="header-content">
+            <span class="section-label">PONTE_EN_CONTACTO</span>
+            <h1 class="page-title">¿Hablamos?</h1>
+            <p class="header-description">
+                Cuéntame sobre tu proyecto, idea o simplemente saluda.
+                Me encanta conectar con personas que piensan en sostenibilidad y tecnología.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="contact-grid">
+        <!-- FORM SECTION -->
+        <section class="form-section">
+            <div class="form-wrapper">
+                <h2 class="form-title">Envía tu mensaje</h2>
+
+                <!-- Success Message -->
+                @if (submitSuccess()) {
+                <div class="message success-message">
+                    ✓ Mensaje enviado correctamente. Te responderé pronto.
+                </div>
+                }
+
+                <!-- Error Message -->
+                @if (submitError()) {
+                <div class="message error-message">
+                    ✗ Hubo un error al enviar. Por favor intenta de nuevo.
+                </div>
+                }
+
+                <!-- Contact Form -->
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nombre *</label>
+                        <input type="text" id="name" formControlName="name" class="form-input"
+                            [class.error]="name?.invalid && name?.touched" placeholder="Tu nombre"
+                            autocomplete="name" />
+                        @if (name?.invalid && name?.touched) {
+                        <span class="error-text">
+                            @if (name?.errors?.['required']) {
+                            El nombre es requerido
+                            }
+                            @if (name?.errors?.['minlength']) {
+                            Mínimo 2 caracteres
+                            }
+                        </span>
+                        }
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" id="email" formControlName="email" class="form-input"
+                            [class.error]="email?.invalid && email?.touched" placeholder="tu@email.com"
+                            autocomplete="email" />
+                        @if (email?.invalid && email?.touched) {
+                        <span class="error-text">
+                            @if (email?.errors?.['required']) {
+                            El email es requerido
+                            }
+                            @if (email?.errors?.['email']) {
+                            Email inválido
+                            }
+                        </span>
+                        }
+                    </div>
+
+                    <!-- Subject Field -->
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Asunto *</label>
+                        <input type="text" id="subject" formControlName="subject" class="form-input"
+                            [class.error]="subject?.invalid && subject?.touched" placeholder="¿De qué se trata?"
+                            autocomplete="off" />
+                        @if (subject?.invalid && subject?.touched) {
+                        <span class="error-text">
+                            @if (subject?.errors?.['required']) {
+                            El asunto es requerido
+                            }
+                            @if (subject?.errors?.['minlength']) {
+                            Mínimo 5 caracteres
+                            }
+                        </span>
+                        }
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensaje *</label>
+                        <textarea id="message" formControlName="message" class="form-textarea"
+                            [class.error]="message?.invalid && message?.touched" placeholder="Cuéntame más..."
+                            rows="6"></textarea>
+                        @if (message?.invalid && message?.touched) {
+                        <span class="error-text">
+                            @if (message?.errors?.['required']) {
+                            El mensaje es requerido
+                            }
+                            @if (message?.errors?.['minlength']) {
+                            Mínimo 10 caracteres
+                            }
+                        </span>
+                        }
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" [disabled]="isSubmitting() || contactForm.invalid">
+                        @if (isSubmitting()) {
+                        <span class="loading">Enviando...</span>
+                        } @else {
+                        <span>Enviar Mensaje</span>
+                        }
+                    </button>
+
+                    <p class="form-footnote">Los campos marcados con * son obligatorios</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- INFO SECTION -->
+        <section class="info-section">
+            <div class="info-wrapper">
+                <h2 class="info-title">Conecta conmigo</h2>
+
+                <!-- Direct Contact Info -->
+                <div class="contact-methods">
+                    @for (contact of contactInfo; track contact.type) {
+                    <a [href]="contact.link" target="_blank" rel="noopener" class="contact-method">
+                        <span class="method-icon">{{ contact.icon }}</span>
+                        <div class="method-content">
+                            <span class="method-type">{{ contact.type }}</span>
+                            <span class="method-value">{{ contact.value }}</span>
+                        </div>
+                    </a>
+                    }
+                </div>
+
+                <!-- Additional Info -->
+                <div class="info-box">
+                    <h3 class="info-box-title">Respuesta típica</h3>
+                    <p class="info-box-text">
+                        Intento responder todos los mensajes en 24-48 horas.
+                        Si es urgente, contacta directo por email o LinkedIn.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3 class="info-box-title">¿Sobre qué trabajo?</h3>
+                    <ul class="info-list">
+                        <li>Desarrollo Angular & TypeScript</li>
+                        <li>Arquitectura sostenible</li>
+                        <li>Mentoría técnica</li>
+                        <li>Consultoría de proyectos</li>
+                    </ul>
+                </div>
+
+                <div class="info-box highlight">
+                    <h3 class="info-box-title">Ubicación</h3>
+                    <p class="info-box-text">
+                        Palma, Islas Baleares 🏝️<br>
+                        <span class="timezone">Zona horaria: CET (UTC+1)</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <h2 class="faq-title">Preguntas frecuentes</h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3 class="faq-question">¿Cuánto cuesta una consulta?</h3>
+                <p class="faq-answer">
+                    Depende del alcance y duración. Te daré una propuesta personalizada
+                    después de conocer tus necesidades.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">¿Trabajas en proyectos remotos?</h3>
+                <p class="faq-answer">
+                    Sí, trabajo 100% remoto. Prefiero equipos distribuidos con
+                    buena comunicación asíncrona.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">¿Cuál es tu disponibilidad?</h3>
+                <p class="faq-answer">
+                    Actualmente disponible para nuevos proyectos. Podemos discutir
+                    horarios y dedicación según tus necesidades.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">¿Haces mentoring?</h3>
+                <p class="faq-answer">
+                    Sí, me encanta. Especialmente con personas interesadas en
+                    arquitectura limpia y sostenibilidad técnica.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>

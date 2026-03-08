@@ -1,16 +1,23 @@
-
 .home-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 120px;
-    padding: 64px 16px;
+    gap: 10px;
+    padding: 50px var(--margin-sides);
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    .home-container {
+        padding: 32px var(--margin-sides);
+        gap: 30px;
+    }
+}
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 4px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -20,7 +27,7 @@
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 25px;
 }
 
 .hero-header {
@@ -39,7 +46,7 @@
     width: fit-content;
     padding: 8px 12px;
     border: 1px solid var(--tech-green);
-    border-radius: 2px;
+    border-radius: 7px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -67,19 +74,45 @@
 }
 
 .main-title {
-    font-size: clamp(2.5rem, 10vw, 4.5rem);
-    line-height: 1.1;
+    font-size: clamp(1rem, 6vw, 2.5rem);
+    line-height: 1.15;
     text-transform: uppercase;
     margin: 0;
     font-family: var(--font-serif);
-    letter-spacing: -1px;
-    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+}
+
+/* Subtítulos - Complemento delicado */
+.main-subtitle {
+    display: inline-block;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: var(--color-rose);
+    margin: 0 4px 0 0;
+    font-style: italic;
+    opacity: 0.85;
 }
 
 .plus-sign {
     color: var(--color-accent);
-    font-weight: 300;
+    font-weight: 1000;
+    font-size: 0.8em;
     animation: rotate-subtle 3s ease-in-out infinite;
+    display: inline;
+    white-space: nowrap;
+    margin-left: 32px;
+}
+
+.title-line {
+    display: block;
+    word-spacing: 0.1em;
+}
+
+.title-line .main-subtitle {
+    display: inline;
+    /* Mantén en la misma línea */
+    margin-left: 4px;
 }
 
 @keyframes rotate-subtle {
@@ -96,9 +129,9 @@
 
 .manifesto {
     max-width: 550px;
-    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-size: 0.8rem;
     line-height: 1.8;
-    margin: 16px 0 0 0;
+    margin: 0;
     opacity: 0.9;
 }
 
@@ -122,14 +155,14 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 28px;
+    padding: 9px 18px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 2px;
+    border-radius: 7px;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -171,9 +204,9 @@
 
 .quick-skills {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .skill-badge {
@@ -182,7 +215,7 @@
     background: rgba(45, 90, 39, 0.1);
     border: 1px solid var(--color-accent);
     color: var(--color-accent);
-    border-radius: 2px;
+    border-radius: 7px;
     font-size: 11px;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
@@ -214,7 +247,7 @@
 
 .metrics-card {
     border: 1px solid var(--color-line);
-    border-radius: 2px;
+    border-radius: 7px;
     padding: 32px;
     background: var(--color-paper);
     animation: slideInRight 0.6s ease-out;
@@ -298,7 +331,7 @@
     position: relative;
     height: 20px;
     background: var(--color-line);
-    border-radius: 2px;
+    border-radius: 7px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -376,7 +409,7 @@
             var(--color-line) 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
-    border-radius: 2px;
+    border-radius: 7px;
 }
 
 .skeleton-line.short {
@@ -442,7 +475,7 @@
     border: 1px solid var(--color-line);
     padding: 28px;
     background: var(--color-paper);
-    border-radius: 2px;
+    border-radius: 7px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -492,7 +525,7 @@
     padding: 4px 8px;
     background: rgba(45, 90, 39, 0.1);
     border: 1px solid var(--color-accent);
-    border-radius: 2px;
+    border-radius: 7px;
     font-size: 10px;
     color: var(--color-accent);
     font-weight: 600;
@@ -518,7 +551,7 @@
     padding: 60px 32px;
     background: linear-gradient(135deg, rgba(45, 90, 39, 0.05) 0%, transparent 100%);
     border: 1px solid var(--color-line);
-    border-radius: 2px;
+    border-radius: 7px;
 }
 
 .manifesto-content {
@@ -527,13 +560,13 @@
 
 .manifesto-content h2 {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin: 0 0 24px 0;
     letter-spacing: -0.5px;
 }
 
 .manifesto-content p {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     line-height: 1.8;
     opacity: 0.9;
     margin: 0 0 16px 0;
@@ -544,9 +577,16 @@
     font-weight: 600;
 }
 
+.plus-sign {
+    color: var(--color-accent);
+}
+
+
 @media (min-width: 992px) {
     .home-container {
-        padding: 80px 32px;
+    padding: 64px var(--margin-sides);
+        max-width: 100%;
+        margin: 0 auto;
         gap: 160px;
     }
 

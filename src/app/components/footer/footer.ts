@@ -15,7 +15,6 @@ export class Footer {
   private readonly ui = inject(UI);
 
   readonly isSustainable = computed(() => this.ui.isSustainable());
-  readonly techStack = () => 'Angular 19 • TypeScript • Tailwind • Vite';
   readonly version = () => '2.0.0';
   readonly buildDate = () => new Date().toISOString().split('T')[0];
   readonly currentYear = () => new Date().getFullYear();

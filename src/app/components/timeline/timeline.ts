@@ -1,49 +1,53 @@
-import { Component, inject, ChangeDetectionStrategy, signal, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { UI } from '../../services/ui';
+
+interface Milestone {
+  id: number;
+  start_year: string;
+  end_year: string;
+  title: string;
+  desc: string;
+}
 
 @Component({
   selector: 'app-timeline',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './timeline.html',
   styleUrl: './timeline.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Timeline implements AfterViewInit {
+export class Timeline {
   private readonly ui = inject(UI);
-  private readonly el = inject(ElementRef);
 
   readonly expandedId = signal<number | null>(null);
+  readonly isSustainable = signal(this.ui.isSustainable());
 
-  readonly milestones = signal([
+  /**
+   * Milestones - Hitos de la trayectoria
+   */
+  readonly milestones = signal<Milestone[]>([
     { id: 1, start_year: '2015', end_year: '2017', title: 'Arquitectura', desc: 'Formación técnica en diseño y estructuras.' },
     { id: 2, start_year: '2015', end_year: '2021', title: 'AGBC', desc: 'Argentina Green Building Council. Office Coordinator.' },
-    { id: 3, start_year: '2021', end_year: 'Actualidad', title: 'Migración', desc: 'Resiliencia y adaptación en un nuevo entorno.' },
-    { id: 4, start_year: '2021', end_year: 'Actualidad', title: 'Hostelería', desc: 'Empatía y gestión multicultural en Formentera.' },
-    { id: 5, start_year: '2026', end_year: 'Actualidad', title: 'SOFTWARE', desc: 'Desarrollo de sistemas escalables y limpios.' }
+    { id: 3, start_year: '2020', end_year: '2021', title: 'UnagiStore', desc: 'En plena pandemia cree mi primer emprendimiento' },
+    { id: 4, start_year: '2021', end_year: 'Actualidad', title: 'Migración', desc: 'Resiliencia y adaptación en un nuevo entorno.' },
+    { id: 5, start_year: '2021', end_year: 'Actualidad', title: 'Forment.ar', desc: 'Creación de mi segundo emprendimiento desarrollando stickers' },
+    { id: 6, start_year: '2021', end_year: 'Actualidad', title: 'Hostelería', desc: 'Empatía y gestión multicultural en Formentera.' },
+    { id: 7, start_year: '2026', end_year: 'Actualidad', title: 'SOFTWARE', desc: 'Desarrollo de sistemas escalables y limpios.' }
   ]);
 
-  ngAfterViewInit(): boolean {
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  const cards = this.el.nativeElement.querySelectorAll('.milestone-card');
-  cards.forEach((card: HTMLElement) => observer.observe(card));
-  
-  return true;
-  }
-
-  isSustainable(): boolean {
-    return this.ui.isSustainable();
-  }
-
-toggleExpand(id: number): void {
-    // Si haces clic en la que ya está abierta, se cierra; si no, abre la nueva
+  /**
+   * Toggle para expandir/contraer en móvil
+   */
+  toggleExpand(id: number): void {
     this.expandedId.set(this.expandedId() === id ? null : id);
   }
 
-  
+  /**
+   * Toggle modo sostenible
+   */
+  toggleSustainableMode(): boolean {
+    return this.ui.toggleSustainableMode();
+  }
 }

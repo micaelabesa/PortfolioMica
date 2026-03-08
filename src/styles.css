@@ -1,23 +1,61 @@
-/* src/styles.scss */
+/* src/styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=JetBrains+Mono:wght@300;500&display=swap');
 
 :root {
-    /* Paleta Técnica-Elegante */
-    --color-paper: #F2EFE9; 
-    --color-ink: #1C1F22; 
-    --color-accent: #2D5A27; 
-    --color-line: rgba(28, 31, 34, 0.1); 
+    /* ========== COLORES ========== */
+    --color-paper: #F5F0E8;
+    --color-ink: #2A2A2A;
+    --color-accent: #6B8E6F;
+    --color-rose: #D4A5A5;
+    --color-line: rgba(42, 42, 42, 0.08);
 
-    /* Tipografías */
+    /* ========== TIPOGRAFÍAS ========== */
     --font-main: 'JetBrains Mono', monospace;
     --font-serif: 'Fraunces', serif;
 
-    /* Spacing (Base 8px) */
+    /* ========== SPACING ========== */
     --space-8: 8px;
     --space-16: 16px;
+    --space-24: 24px;
     --space-32: 32px;
+    --space-48: 48px;
+    --space-64: 64px;
+
+    /* ========== MÁRGENES RESPONSIVOS ========== */
+    /* Desktop XL (1400px+) */
+    --margin-sides: 120px;
+    --max-width: 100%;
+
+    /* Desktop L (1200px) */
+    --margin-sides-lg: 80px;
+
+    /* Tablet (768px - 1199px) */
+    --margin-sides-md: 48px;
+
+    /* Mobile (< 768px) */
+    --margin-sides-sm: 20px;
 }
 
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 1199px) {
+    :root {
+        --margin-sides: var(--margin-sides-lg);
+    }
+}
+
+@media (max-width: 1023px) {
+    :root {
+        --margin-sides: var(--margin-sides-md);
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --margin-sides: var(--margin-sides-sm);
+    }
+}
+
+/* ========== BODY GLOBAL ========== */
 body {
     background-color: var(--color-paper);
     color: var(--color-ink);
@@ -25,9 +63,9 @@ body {
     margin: 0;
     transition: background-color 0.4s ease;
 
-    /* Grilla muy sutil, casi imperceptible */
-    background-image: radial-gradient(var(--color-line) 2px, transparent 1px);
-    background-size: 32px 32px;
+    /* Textura de puntos (dotted paper) */
+    background-image: radial-gradient(var(--color-line) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
 }
 
 h1,
@@ -36,9 +74,11 @@ h3 {
     font-family: var(--font-serif);
 }
 
+/* ========== MODO SOSTENIBLE ========== */
 body.sustainable-mode {
-    --color-paper: #121412;
-    --color-ink: #D9D4CC;
-    --color-accent: #81C784;
-    --color-line: rgba(217, 212, 204, 0.05);
+    --color-paper: #0F0E0B;
+    --color-ink: #E8E3D8;
+    --color-accent: #8BA88F;
+    --color-rose: #A8858A;
+    --color-line: rgba(232, 227, 216, 0.08);
 }

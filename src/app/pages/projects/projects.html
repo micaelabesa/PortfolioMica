@@ -1,1 +1,82 @@
-<p>projects works!</p>
+<div class="estructuras-container">
+    <!-- HEADER SECTION -->
+    <section class="estructuras-header">
+        <div class="header-content">
+            <span class="section-label">PROYECTOS_COMPLETADOS</span>
+            <h1 class="page-title">Estructuras Construidas</h1>
+            <p class="header-description">
+                Proyectos que reflejan mi enfoque en <strong>sostenibilidad técnica</strong>,
+                <strong>escalabilidad</strong> y <strong>experiencia del usuario</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- FILTERS SECTION -->
+    <section class="filters-section">
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">
+                TODOS ({{ proyectos().length }})
+            </button>
+            <button class="filter-btn" data-filter="featured">
+                DESTACADOS
+            </button>
+            <button class="filter-btn" data-filter="angular">
+                ANGULAR
+            </button>
+            <button class="filter-btn" data-filter="design">
+                DESIGN
+            </button>
+        </div>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section class="projects-section">
+        <div class="projects-grid">
+            @for (proyecto of proyectos(); track proyecto.id) {
+            <article class="project-card" [class.is-featured]="proyecto.featured">
+                <!-- Year Badge -->
+                <div class="project-year">{{ proyecto.year }}</div>
+
+                <!-- Main Content -->
+                <div class="project-content">
+                    <h3 class="project-title">{{ proyecto.title }}</h3>
+                    <p class="project-description">{{ proyecto.description }}</p>
+
+                    <!-- Tags -->
+                    <div class="project-tags">
+                        @for (tag of proyecto.tags; track tag) {
+                        <span class="tag">{{ tag }}</span>
+                        }
+                    </div>
+                </div>
+
+                <!-- Footer Link -->
+                <div class="project-footer">
+                    <a [href]="proyecto.link || '#'" class="project-link">
+                        Explorar <span class="arrow">→</span>
+                    </a>
+                </div>
+            </article>
+            }
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>¿Hablamos de tu próximo proyecto?</h2>
+            <p>
+                Cuéntame sobre tu idea. Juntos construiremos una solución técnica
+                sólida y sostenible.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:micaela.besasso@hotmail.com" class="cta-primary">
+                    Contáctame
+                </a>
+                <a routerLink="/cimientos" class="cta-secondary">
+                    Mi Historia <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

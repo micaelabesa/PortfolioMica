@@ -1,4 +1,4 @@
-<nav class="nav-shell" [class.menu-open]="isMenuOpen()">
+<nav class="nav-shell" [class.menu-open]="isMenuOpen()" #navContainer>
     <div class="nav-bar">
         <div class="brand">
             <a routerLink="/" class="logo">MICAELA BESASSO <span class="version">v2.0</span></a>
@@ -12,9 +12,13 @@
 
         <div class="actions">
             <app-theme-toggle></app-theme-toggle>
-            <button class="mobile-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
-                {{ isMenuOpen() ? '[X]' : '[=]' }}
-            </button>
+                <button class="mobile-toggle" (click)="toggleMenu()" [class.menu-open]="isMenuOpen()" aria-label="Abrir menú">
+                    <div class="hamburger-box">
+                        <div class="hamburger-line"></div>
+                        <div class="hamburger-line"></div>
+                        <div class="hamburger-line"></div>
+                    </div>
+                </button>
         </div>
     </div>
 

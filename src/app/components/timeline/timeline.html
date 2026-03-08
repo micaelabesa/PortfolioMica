@@ -6,14 +6,15 @@
 
         <div class="card-content" (click)="toggleExpand(item.id)">
             <div class="card-header">
-                <span class="card-id">{{ item.start_year }} - {{ item.end_year }} </span>
+                <span class="card-id">{{ item.start_year }} - {{ item.end_year }}</span>
                 <h3 class="card-title">{{ item.title }}</h3>
-                <span class="mobile-arrow"></span>
             </div>
 
             <div class="card-body">
                 <p class="card-description">{{ item.desc }}</p>
             </div>
+
+            <span class="mobile-arrow"></span>
         </div>
 
     </div>
