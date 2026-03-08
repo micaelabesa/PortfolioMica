@@ -1,6 +1,7 @@
 import { Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { UI } from '../../services/ui';
 
 @Component({
@@ -14,20 +15,16 @@ import { UI } from '../../services/ui';
 export class Contact {
   private readonly ui = inject(UI);
   private readonly fb = inject(FormBuilder);
+  private readonly http = inject(HttpClient);  // ← AGREGAR
 
   readonly isSustainable = signal(this.ui.isSustainable());
   readonly isSubmitting = signal(false);
   readonly submitSuccess = signal(false);
   readonly submitError = signal(false);
+  readonly submitErrorMessage = signal('');
 
-  /**
-   * Formulario reactivo de contacto
-   */
   contactForm: FormGroup;
 
-  /**
-   * Información de contacto directo
-   */
   contactInfo = [
     {
       type: 'Email',
@@ -58,9 +55,6 @@ export class Contact {
     });
   }
 
-  /**
-   * Enviar formulario
-   */
   onSubmit(): void {
     if (this.contactForm.invalid) {
       return;
@@ -70,26 +64,35 @@ export class Contact {
     this.submitError.set(false);
     this.submitSuccess.set(false);
 
-    // Simular envío
     const formData = this.contactForm.value;
-    console.log('Enviando:', formData);
 
-    // Simular delay de 1.5s
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.submitSuccess.set(true);
-      this.contactForm.reset();
+    // Enviar a la Vercel Function
+    this.http.post('/api/contact', formData).subscribe({
+      next: (response: any) => {
+        this.isSubmitting.set(false);
+        this.submitSuccess.set(true);
+        this.contactForm.reset();
 
-      // Limpiar mensaje de éxito después de 5s
-      setTimeout(() => {
-        this.submitSuccess.set(false);
-      }, 5000);
-    }, 1500);
+        // Limpiar mensaje después de 5s
+        setTimeout(() => {
+          this.submitSuccess.set(false);
+        }, 5000);
+      },
+      error: (error) => {
+        this.isSubmitting.set(false);
+        this.submitError.set(true);
+        this.submitErrorMessage.set(
+          error.error?.error || 'Error al enviar el formulario'
+        );
+
+        // Limpiar error después de 5s
+        setTimeout(() => {
+          this.submitError.set(false);
+        }, 5000);
+      }
+    });
   }
 
-  /**
-   * Getter para validaciones
-   */
   get name() {
     return this.contactForm.get('name');
   }
@@ -106,9 +109,6 @@ export class Contact {
     return this.contactForm.get('message');
   }
 
-  /**
-   * Toggle modo sostenible
-   */
   toggleSustainableMode(): boolean {
     return this.ui.toggleSustainableMode();
   }
