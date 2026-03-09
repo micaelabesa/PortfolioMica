@@ -17,16 +17,16 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   try {
     // Configurar transporte de email (Gmail example)
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASSWORD
-      }
+    service: 'gmail',
+    auth: {
+        user: process.env['GMAIL_USER'],
+        pass: process.env['GMAIL_PASSWORD']
+    }
     });
 
     // Email al usuario (confirmación)
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: process.env['GMAIL_USER'],
       to: email,
       subject: 'Recibimos tu mensaje',
       html: `
@@ -40,8 +40,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     // Email a ti (notificación)
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: 'micaela.besasso@hotmail.com',
+      from: process.env['GMAIL_USER'],
+      to: 'micaela.besasso@gmail.com',
       subject: `Nuevo contacto: ${subject}`,
       html: `
         <h3>Nuevo mensaje de contacto</h3>
