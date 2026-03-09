@@ -1,30 +1,26 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
-export default async (req: VercelRequest, res: VercelResponse) => {
-  // Solo acepta POST
+export default async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método no permitido' });
   }
 
   const { name, email, subject, message } = req.body;
 
-  // Validaciones
   if (!name || !email || !subject || !message) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
   }
 
   try {
-    // Configurar transporte de email (Gmail example)
     const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
+      service: 'gmail',
+      auth: {
         user: process.env['GMAIL_USER'],
         pass: process.env['GMAIL_PASSWORD']
-    }
+      }
     });
 
-    // Email al usuario (confirmación)
+    // Email al usuario
     await transporter.sendMail({
       from: process.env['GMAIL_USER'],
       to: email,
@@ -38,10 +34,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       `
     });
 
-    // Email a ti (notificación)
+    // Email a ti
     await transporter.sendMail({
       from: process.env['GMAIL_USER'],
-      to: 'micaela.besasso@gmail.com',
+      to: 'micaela.besasso@hotmail.com',
       subject: `Nuevo contacto: ${subject}`,
       html: `
         <h3>Nuevo mensaje de contacto</h3>
@@ -61,7 +57,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     console.error('Error enviando email:', error);
     return res.status(500).json({ 
       error: 'Error al procesar el formulario',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : String(error)
     });
   }
 };
