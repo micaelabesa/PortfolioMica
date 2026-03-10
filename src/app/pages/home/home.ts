@@ -1,6 +1,7 @@
 import { Component, inject, ChangeDetectionStrategy, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UI } from '../../services/ui';
+import { ProyectosService } from '../../services/proyectos.service';
 
 interface Project {
   id: number;
@@ -20,41 +21,12 @@ interface Project {
 })
 export class Home {
   private readonly ui = inject(UI);
+  private readonly proyectosService = inject(ProyectosService);
 
   readonly isSustainable = computed((): boolean => this.ui.isSustainable());
+  readonly proyectos = this.proyectosService.proyectos;
 
-  /**
-   * Proyectos destacados para la vista
-   */
-  readonly featuredProjects = signal<Project[]>([
-    {
-      id: 1,
-      year: '2023',
-      title: 'FORMENTERA_TECH',
-      description: 'Sistema de gestión hotelera con enfoque en UX sostenible para turismo responsable.',
-      tags: ['Angular', 'Backend', 'UX', 'Sostenibilidad'],
-      featured: true
-    },
-    {
-      id: 2,
-      year: '2024',
-      title: 'ARCH_TO_CODE',
-      description: 'Herramienta que traduce especificaciones arquitectónicas a componentes reutilizables.',
-      tags: ['TypeScript', 'Design System', 'Automation'],
-      featured: false
-    },
-    {
-      id: 3,
-      year: '2024',
-      title: 'SUSTAINABLE_UI',
-      description: 'Framework de componentes optimizados para bajo consumo y máxima eficiencia.',
-      tags: ['CSS', 'Performance', 'Accessibility']
-    }
-  ]);
-
-  /**
-   * Retorna timestamp de última actualización formateado
-   */
+ 
   readonly lastUpdate = (): string => {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -62,16 +34,10 @@ export class Home {
     return `ÚLTIMA_ACTUALIZACIÓN: ${hours}:${minutes} UTC`;
   };
 
-  /**
-   * Retorna el año actual para copyrights
-   */
   getCurrentYear(): number {
     return new Date().getFullYear();
   }
 
-  /**
-   * Método para cambiar el modo sostenible desde el UI
-   */
   toggleSustainableMode(): boolean {
     return this.ui.toggleSustainableMode();
   }

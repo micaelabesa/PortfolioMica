@@ -11,7 +11,6 @@
         </div>
     </section>
 
-    <!-- FILTERS SECTION -->
     <section class="filters-section">
         <div class="filter-group">
             <button class="filter-btn active" data-filter="all">
@@ -29,20 +28,16 @@
         </div>
     </section>
 
-    <!-- PROJECTS GRID -->
     <section class="projects-section">
         <div class="projects-grid">
             @for (proyecto of proyectos(); track proyecto.id) {
             <article class="project-card" [class.is-featured]="proyecto.featured">
-                <!-- Year Badge -->
                 <div class="project-year">{{ proyecto.year }}</div>
 
-                <!-- Main Content -->
                 <div class="project-content">
                     <h3 class="project-title">{{ proyecto.title }}</h3>
                     <p class="project-description">{{ proyecto.description }}</p>
 
-                    <!-- Tags -->
                     <div class="project-tags">
                         @for (tag of proyecto.tags; track tag) {
                         <span class="tag">{{ tag }}</span>
@@ -50,7 +45,6 @@
                     </div>
                 </div>
 
-                <!-- Footer Link -->
                 <div class="project-footer">
                     <a [href]="proyecto.link || '#'" class="project-link">
                         Explorar <span class="arrow">→</span>
@@ -61,7 +55,6 @@
         </div>
     </section>
 
-    <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="cta-content">
             <h2>¿Hablamos de tu próximo proyecto?</h2>

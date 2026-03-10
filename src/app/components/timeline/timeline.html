@@ -7,7 +7,16 @@
         <div class="card-content" (click)="toggleExpand(item.id)">
             <div class="card-header">
                 <span class="card-id">{{ item.start_year }} - {{ item.end_year }}</span>
-                <h3 class="card-title">{{ item.title }}</h3>
+                <h3 class="card-title">
+                    @if (item.link) {
+                    <a [href]="item.link" target="_blank" rel="noopener" class="milestone-link">
+                        {{ item.title }}
+                        <span class="external-icon">↗</span>
+                    </a>
+                    } @else {
+                    {{ item.title }}
+                    }
+                </h3>
             </div>
 
             <div class="card-body">

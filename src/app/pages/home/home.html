@@ -24,7 +24,7 @@
             <header class="hero-header">
                 <div class="status-tag">
                     <span class="pulse-dot"></span>
-                    STATUS: FULL STACK DEVELOPER
+                    STATUS: DESARROLLADORA FULL STACK
                 </div>
                 <h1 class="main-title">
                     <span class="title-line">
@@ -51,7 +51,7 @@
             <span>DESCUBRE MIS CIMIENTOS</span>
             <span class="arrow">→</span>
         </a>
-        <a href="#contact" class="secondary-btn">
+        <a routerLink="/contact" class="secondary-btn">
             <span>CONTACTO</span>
             <span class="arrow">↓</span>
         </a>
@@ -118,11 +118,11 @@
 <section class="featured-work">
     <div class="featured-header">
         <h2>PROYECTOS_DESTACADOS</h2>
-        <a routerLink="/proyectos" class="see-all">VER TODO →</a>
+        <a routerLink="/projects" class="see-all">VER TODO →</a>
     </div>
 
     <div class="projects-grid">
-        @for (project of featuredProjects(); track project.id) {
+        @for (project of proyectos(); track project.id) {
         <div class="project-card" [class.is-featured]="project.featured">
             <div class="project-label">{{ project.year }}</div>
             <h3 class="project-title">{{ project.title }}</h3>
@@ -132,7 +132,7 @@
                 <span class="tag">{{ tag }}</span>
                 }
             </div>
-            <a href="#" class="project-link">Explorar →</a>
+            <a [href]="project.link || '#'" class="project-link">Explorar →</a>
         </div>
         }
     </div>
@@ -147,9 +147,7 @@
             Cada línea es un pequeño acto de responsabilidad con quien la usa.
         </p>
         <p>
-            Después de proyectar casas sostenibles, construir hoteles en islas pequeñas y gestionar equipos
-            multiculturales,
-            aprendí que <strong>la tecnología es un servicio al ser humano</strong>, no al revés.
+            Aprendí que <strong>la tecnología es un servicio al ser humano</strong>, no al revés.
         </p>
     </div>
     </section>
