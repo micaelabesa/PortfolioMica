@@ -125,17 +125,38 @@
             <div class="info-wrapper">
                 <h2 class="info-title">Conecta conmigo</h2>
 
-                <!-- Direct Contact Info -->
-                <div class="contact-methods">
-                    @for (contact of contactInfo; track contact.type) {
-                    <a [href]="contact.link" target="_blank" rel="noopener" class="contact-method">
-                        <span class="method-icon">{{ contact.icon }}</span>
-                        <div class="method-content">
-                            <span class="method-type">{{ contact.type }}</span>
-                            <span class="method-value">{{ contact.value }}</span>
+                <div class="contact-methods-wrapper">
+
+                    <button class="toggle-visibility-btn" (click)="toggleContactVisibility()"
+                        [attr.aria-label]="contactVisible() ? 'Ocultar contacto' : 'Mostrar contacto'">
+                        <i [class]="contactVisible() ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+                    </button>
+
+                    <div class="contact-methods">
+                        @for (contact of contactInfo; track contact.type) {
+
+                        @if (contactVisible()) {
+
+                        <a [href]="contact.link" target="_blank" rel="noopener" class="contact-method">
+                            <span class="method-icon">{{ contact.icon }}</span>
+                            <div class="method-content">
+                                <span class="method-type">{{ contact.type }}</span>
+                                <span class="method-value">{{ contact.value }}</span>
+                            </div>
+                        </a>
+                        } @else {
+
+                        <div class="contact-method is-hidden">
+                            <span class="method-icon">{{ contact.icon }}</span>
+                            <div class="method-content">
+                                <span class="method-type">{{ contact.type }}</span>
+                                <span class="method-value masked">••••••••••</span>
+                            </div>
                         </div>
-                    </a>
-                    }
+                        }
+
+                        }
+                    </div>
                 </div>
 
                 <div class="info-box">

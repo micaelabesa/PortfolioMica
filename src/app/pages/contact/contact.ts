@@ -15,13 +15,18 @@ import { UI } from '../../services/ui';
 export class Contact {
   private readonly ui = inject(UI);
   private readonly fb = inject(FormBuilder);
-  private readonly http = inject(HttpClient);  // ← AGREGAR
+  private readonly http = inject(HttpClient);
 
   readonly isSustainable = signal(this.ui.isSustainable());
   readonly isSubmitting = signal(false);
   readonly submitSuccess = signal(false);
   readonly submitError = signal(false);
   readonly submitErrorMessage = signal('');
+  readonly contactVisible = signal(false);
+
+  toggleContactVisibility() {
+      this.contactVisible.update(v => !v);
+  }
 
   contactForm: FormGroup;
 

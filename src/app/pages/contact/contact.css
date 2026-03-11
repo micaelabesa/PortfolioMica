@@ -425,3 +425,51 @@ body.sustainable-mode .info-box {
 body.sustainable-mode .faq-item:hover {
     background: linear-gradient(135deg, rgba(107, 142, 111, 0.15) 0%, transparent 100%);
 }
+
+/* ========== CONTACT VISIBILITY TOGGLE ========== */
+
+.contact-methods-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toggle-visibility-btn {
+    align-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: 7px;
+    padding: 5px 10px;
+    color: var(--color-accent);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.toggle-visibility-btn:hover {
+    border-color: var(--color-accent);
+    background: rgba(107, 142, 111, 0.05);
+}
+
+.toggle-visibility-btn i {
+    font-size: 13px;
+}
+
+/* Estado oculto — hereda todos los estilos de .contact-method */
+.contact-method.is-hidden {
+    cursor: default;
+    opacity: 0.45;
+    pointer-events: none;
+    user-select: none;
+}
+
+.method-value.masked {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 3px;
+    font-size: 11px;
+    opacity: 0.6;
+}
