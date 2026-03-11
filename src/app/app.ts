@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { Nav } from './components/nav/nav';
 import { AlertService } from './services/alertservice';
+import { ScrollToTopComponent } from "./components/scroll-to-top/scroll-to-top";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Footer, Nav],
+  imports: [RouterOutlet, Footer, Nav, ScrollToTopComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush

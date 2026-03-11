@@ -4,10 +4,26 @@
 :root {
     /* ========== COLORES ========== */
     --color-paper: #F5F0E8;
-    --color-ink: #2A2A2A;
-    --color-accent: #6B8E6F;
-    --color-rose: #D4A5A5;
-    --color-line: rgba(42, 42, 42, 0.08);
+    --color-ink: #4e4b38;
+    --color-accent: #B3679B;
+    --color-rose: #6B8E6F;
+    --color-line: rgba(78, 75, 56, 0.08);
+
+    --color-brown-dark: #4e4b38;
+    --color-brown-medium: #6e684a;
+    --color-sand-warm: #f5f0e8;
+    --color-beige-dark: #ede6d6;
+    --color-purple-rose: #B3679B;
+
+    --color-text-primary: #4e4b38;
+    --color-text-secondary: #6e684a;
+    --color-border: #ede6d6;
+    --color-background-secondary: #ede6d6;
+
+    --gradient-primary: linear-gradient(135deg, #f5f0e8 0%, #ede6d6 100%);
+    --gradient-accent: linear-gradient(135deg, #B3679B 0%, #ede6d6 100%);
+    --gradient-warm: linear-gradient(135deg, #f5f0e8 0%, #6e684a 100%);
+    --gradient-soft: linear-gradient(135deg, #ede6d6 0%, #f5f0e8 100%);
 
     /* ========== TIPOGRAFÍAS ========== */
     --font-main: 'JetBrains Mono', monospace;
@@ -22,18 +38,11 @@
     --space-64: 64px;
 
     /* ========== MÁRGENES RESPONSIVOS ========== */
-    /* Desktop XL (1400px+) */
     --margin-sides: 120px;
-    --max-width: 100%;
-
-    /* Desktop L (1200px) */
     --margin-sides-lg: 80px;
-
-    /* Tablet (768px - 1199px) */
     --margin-sides-md: 48px;
-
-    /* Mobile (< 768px) */
     --margin-sides-sm: 20px;
+    --max-width: 100%;
 }
 
 /* ========== MEDIA QUERIES ========== */
@@ -76,9 +85,406 @@ h3 {
 
 /* ========== MODO SOSTENIBLE ========== */
 body.sustainable-mode {
-    --color-paper: #0F0E0B;
-    --color-ink: #E8E3D8;
-    --color-accent: #8BA88F;
-    --color-rose: #A8858A;
+    --color-paper: #1a1915;
+    --color-ink: #e8e3d8;
+    --color-accent: #B3679B;
     --color-line: rgba(232, 227, 216, 0.08);
+    
+    --color-brown-dark: #8b8470;
+    --color-brown-medium: #6e684a;
+    --color-sand-warm: #2a2620;
+    --color-beige-dark: #3d3a2f;
+    --color-purple-rose: #B3679B;
+
+    --color-text-primary: #e8e3d8;
+    --color-text-secondary: #b8b3a8;
+    --color-border: #3d3a2f;
+    --color-background-secondary: #2a2620;
+    
+    --gradient-primary: linear-gradient(135deg, #1a1915 0%, #2a2620 100%);
+    --gradient-accent: linear-gradient(135deg, #B3679B 0%, #2a2620 100%);
+    --gradient-warm: linear-gradient(135deg, #1a1915 0%, #8b8470 100%);
+    --gradient-soft: linear-gradient(135deg, #2a2620 0%, #1a1915 100%);
+}
+
+.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-accent);
+    color: var(--color-paper);
+}
+
+.primary-btn:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 24px rgba(179, 103, 155, 0.3);
+}
+
+/* ========== BOTONES SECUNDARIOS ========== */
+
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-line);
+    background: transparent;
+    color: var(--color-ink);
+}
+
+.secondary-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(179, 103, 155, 0.05);
+}
+
+/* ========== TARJETAS/CARDS ========== */
+
+.card {
+    border: 1px solid var(--color-line);
+    border-radius: 7px;
+    padding: 28px;
+    background: var(--color-paper);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card.featured {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-paper) 0%, rgba(179, 103, 155, 0.05) 100%);
+}
+
+/* ========== BADGES Y TAGS ========== */
+
+.tag,
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: rgba(179, 103, 155, 0.1);
+    border: 1px solid var(--color-accent);
+    border-radius: 7px;
+    font-size: 10px;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========== SKILL BADGES ========== */
+
+.skill-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(179, 103, 155, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    border-radius: 7px;
+    font-size: 11px;
+    font-family: var(--font-main);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== PROGRESS BAR ========== */
+
+.progress-container {
+    position: relative;
+    height: 20px;
+    background: var(--color-line);
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 1px;
+    width: var(--value);
+    transition: width 0.8s ease-out;
+    animation: barFill 0.8s ease-out;
+}
+
+@keyframes barFill {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--value);
+    }
+}
+
+.progress-text {
+    position: absolute;
+    right: 8px;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--color-accent);
+    font-family: var(--font-main);
+}
+
+/* ========== STATUS TAG ========== */
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    color: var(--color-accent);
+    width: fit-content;
+    padding: 8px 12px;
+    border: 1px solid var(--color-accent);
+    border-radius: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* ========== MANIFESTO BOX ========== */
+
+.manifesto-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: rgba(179, 103, 155, 0.05);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 4px;
+}
+
+.manifesto {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin: 0;
+    opacity: 0.95;
+    color: var(--color-ink);
+}
+
+.manifesto strong {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* ========== CAJAS DE INFORMACIÓN ========== */
+
+.info-box {
+    padding: 20px;
+    background: linear-gradient(135deg, transparent 0%, rgba(179, 103, 155, 0.03) 100%);
+    border: 1px solid var(--color-line);
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+.info-box:hover {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, rgba(179, 103, 155, 0.05) 0%, transparent 100%);
+}
+
+.info-box.highlight {
+    border-color: var(--color-accent);
+    background: linear-gradient(135deg, rgba(179, 103, 155, 0.08) 0%, transparent 100%);
+}
+
+.info-box-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.info-box-text {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* ========== ENLACES Y ACCIONES ========== */
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ========== ARROW ANIMATION ========== */
+
+.arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.primary-btn:hover .arrow,
+.secondary-btn:hover .arrow,
+.project-link:hover .arrow,
+.see-all:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* ========== TIMELINE/JOURNEY ========== */
+
+.journey-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.journey-point {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.journey-emoji {
+    font-size: 2.5rem;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* ========== UTILIDADES ========== */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-16 {
+    margin-top: var(--space-16);
+}
+
+.mt-32 {
+    margin-top: var(--space-32);
+}
+
+.mb-16 {
+    margin-bottom: var(--space-16);
+}
+
+.mb-32 {
+    margin-bottom: var(--space-32);
+}
+
+.gap-16 {
+    gap: var(--space-16);
+}
+
+.gap-24 {
+    gap: var(--space-24);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .journey-timeline {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .skill-badge {
+        font-size: 10px;
+    }
+}
+
+/* ========== MODO SOSTENIBLE - MEJORAS ESPECÍFICAS ========== */
+
+body.sustainable-mode .card {
+    background: linear-gradient(135deg, var(--color-paper) 0%, rgba(179, 103, 155, 0.02) 100%);
+}
+
+body.sustainable-mode .info-box {
+    background: linear-gradient(135deg, rgba(179, 103, 155, 0.1) 0%, transparent 100%);
+}
+
+body.sustainable-mode .manifesto-box {
+    background: rgba(179, 103, 155, 0.1);
+}
+
+body.sustainable-mode .card.featured {
+    background: linear-gradient(135deg, var(--color-paper) 0%, rgba(179, 103, 155, 0.08) 100%);
+}
+
+body.sustainable-mode .primary-btn {
+    box-shadow: 0 4px 16px rgba(179, 103, 155, 0.4);
+}
+
+body.sustainable-mode .primary-btn:hover {
+    box-shadow: 0 8px 32px rgba(179, 103, 155, 0.5);
 }

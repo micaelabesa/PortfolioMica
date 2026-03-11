@@ -1,9 +1,5 @@
-// src/app/services/ui.ts
 import { Injectable, signal, effect, computed } from '@angular/core';
 
-/**
- * Interfaz para la configuración de tema
- */
 interface ThemeConfig {
     name: 'standard' | 'sustainable';
     label: string;
@@ -20,21 +16,19 @@ interface ThemeConfig {
     reduceMotion: boolean;
 }
 
-/**
- * Configuración de temas disponibles
- */
 const THEME_CONFIGS: Record<string, ThemeConfig> = {
     standard: {
         name: 'standard',
         label: 'ESTÁNDAR',
         colors: {
-            accent: '#2d5a27',      // Tech Green
-            paper: '#ffffff',
-            ink: '#000000',
-            line: '#e0e0e0',
-            success: '#2d5a27',
-            warning: '#f59e0b',
-            error: '#ef4444'
+            // Paleta Opción A - Tema Estándar (Cálido)
+            accent: '#B3679B',                          // Morado (Acción principal)
+            paper: '#ede6d6',                           // Beige (Fondo PREDOMINANTE)
+            ink: '#4e4b38',                             // Marrón oscuro (Texto)
+            line: 'rgba(78, 75, 56, 0.08)',            // Rgba marrón (Líneas/Patrón)
+            success: '#16a34a',                         // Verde éxito
+            warning: '#f59e0b',                         // Ámbar advertencia
+            error: '#ef4444'                            // Rojo error
         },
         density: 'comfortable',
         reduceMotion: false
@@ -43,13 +37,14 @@ const THEME_CONFIGS: Record<string, ThemeConfig> = {
         name: 'sustainable',
         label: 'SOSTENIBLE',
         colors: {
-            accent: '#16a34a',      // Green más brillante (eco-friendly)
-            paper: '#fafaf8',       // Ligeramente teñido
-            ink: '#1f2937',         // Más suave
-            line: '#ddd6d0',        // Línea más cálida
-            success: '#16a34a',
-            warning: '#eab308',
-            error: '#dc2626'
+            // Paleta Opción A - Tema Sostenible (Oscuro cálido)
+            accent: '#B3679B',                          // Morado (Mantiene protagonismo)
+            paper: '#1a1915',                           // Oscuro cálido (Fondo)
+            ink: '#e8e3d8',                             // Beige claro (Texto)
+            line: 'rgba(232, 227, 216, 0.08)',         // Rgba beige claro (Líneas/Patrón)
+            success: '#16a34a',                         // Verde éxito
+            warning: '#eab308',                         // Ámbar más brillante
+            error: '#dc2626'                            // Rojo más brillante
         },
         density: 'compact',
         reduceMotion: true
@@ -58,24 +53,18 @@ const THEME_CONFIGS: Record<string, ThemeConfig> = {
 
 @Injectable({ providedIn: 'root' })
 export class UI {
-    /**
-     * Signal para el tema actual
-     */
+
     private readonly currentTheme = signal<'standard' | 'sustainable'>(
-        (localStorage.getItem('theme-mode') as 'standard' | 'sustainable') ?? 'standard'
+        (localStorage.getItem('theme-mode') as 'standard' | 'sustainable') ?? 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'sustainable' : 'standard')
     );
 
-    /**
-     * Signal para la configuración del tema (derivado)
-     */
     readonly themeConfig = computed((): ThemeConfig => {
         const theme = this.currentTheme();
         return THEME_CONFIGS[theme];
     });
 
-    /**
-     * Signal público para compatibilidad hacia atrás
-     */
+
     readonly isSustainable = computed((): boolean => this.currentTheme() === 'sustainable');
 
     /**
@@ -148,13 +137,14 @@ export class UI {
         if (mediaQuery.addEventListener) {
             mediaQuery.addEventListener('change', handleChange);
         } else {
-            // Fallback para navegadores antiguos
-            mediaQuery.addListener(handleChange);
+            // Fallback para navegadores antiguos (deprecated pero necesario)
+            (mediaQuery as any).addListener(handleChange);
         }
     }
 
     /**
      * Aplica las variables CSS del tema al documento
+     * ⚠️ NO aplica background-image - ese es manejado por styles.css
      */
     private applyThemeVariables(config: ThemeConfig): void {
         const root = document.documentElement;
@@ -165,7 +155,10 @@ export class UI {
         style.setProperty('--color-paper', config.colors.paper);
         style.setProperty('--color-ink', config.colors.ink);
         style.setProperty('--color-line', config.colors.line);
-        style.setProperty('--tech-green', config.colors.accent);
+
+        // Color secundario (marrón para estándar, marrón claro para sostenible)
+        const accentSecondary = config.colors.ink === '#4e4b38' ? '#6e684a' : '#8b8470';
+        style.setProperty('--color-accent-secondary', accentSecondary);
 
         // Colores de estado (si existen)
         if (config.colors.success) {
@@ -188,6 +181,8 @@ export class UI {
         if (metaTheme) {
             metaTheme.setAttribute('content', config.colors.accent);
         }
+
+        // ⚠️ NO establecer background-image aquí - está en styles.css con background-attachment: fixed en html
     }
 
     /**
