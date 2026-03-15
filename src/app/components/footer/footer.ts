@@ -1,15 +1,16 @@
-// src/app/components/footer/footer.ts
 import { Component, inject, ChangeDetectionStrategy, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UI } from '../../services/ui';
 
 @Component({
   selector: 'app-footer',
-   standalone: true,
   imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.sustainable-mode]': 'isSustainable()'
+  }
 })
 export class Footer {
   private readonly ui = inject(UI);

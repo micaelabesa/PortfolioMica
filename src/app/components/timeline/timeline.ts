@@ -58,7 +58,7 @@ export class Timeline {
   /**
    * Toggle modo sostenible
    */
-  toggleSustainableMode(): boolean {
+  toggleSustainableMode() {
     return this.ui.toggleSustainableMode();
   }
 }

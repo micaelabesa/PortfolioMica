@@ -1,4 +1,3 @@
-// src/app/components/nav/nav.ts
 import { Component, inject, signal, ChangeDetectionStrategy, computed, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { UI } from '../../services/ui';
@@ -18,27 +17,27 @@ export class Nav {
   readonly isMenuOpen = signal<boolean>(false);
   readonly isSustainable = computed((): boolean => this.ui.isSustainable());
 
-  toggleMenu(): boolean {
-    this.isMenuOpen.update(val => !val);
-    return this.isMenuOpen();
+  
+  @HostListener('document:click', ['$event'])@HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+  if (!this.isMenuOpen()) return;  // Menú cerrado, ignorar
+
+  const navElement = this.navContainer?.nativeElement;
+  
+  // Si click fue dentro del nav, no cerrar
+  if (navElement && navElement.contains(event.target as Node)) {
+    return;
   }
 
-  /**
-   * Cerrar menú al clickear fuera
-   */
-    @HostListener('document:click', ['$event'])
-    closeMenuOnClickOutside(event: MouseEvent): void {
-    // Si el menú está cerrado, no hacer nada
-    if (!this.isMenuOpen()) return;
+  // Click fuera del nav - CERRAR
+  this.closeMenu();
+}
 
-    // Verificar si el click fue dentro del nav
-    const navElement = this.navContainer?.nativeElement;
-    if (navElement && navElement.contains(event.target as Node)) {
-      // Click dentro del nav, no cerrar
-      return;
-    }
+toggleMenu(): void {
+  this.isMenuOpen.update(val => !val);
+}
 
-    // Click fuera del nav, cerrar menú
-    this.isMenuOpen.set(false);
-  }
+closeMenu(): void {
+  this.isMenuOpen.set(false);
+}
 }

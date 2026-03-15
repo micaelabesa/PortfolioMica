@@ -42,7 +42,7 @@ export class Projects {
     return new Date().getFullYear();
   }
 
-  toggleSustainableMode(): boolean {
+  toggleSustainableMode() {
     return this.ui.toggleSustainableMode();
   }
 

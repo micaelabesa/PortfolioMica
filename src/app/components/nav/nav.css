@@ -7,22 +7,24 @@
     border-bottom: 1px solid var(--color-line);
     font-size: 12px;
     display: flex;
-    /* ← NUEVO */
     justify-content: center;
-    /* ← NUEVO */
 }
 
 .nav-bar {
-    max-width: var(--max-width);
-    /* ← CAMBIÓ: var(--max-width) */
     width: 100%;
-    margin: 0;
-    /* ← CAMBIÓ: 0 */
+    max-width: var(--max-width);
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--margin-sides);
+    gap: 24px;
+}
+
+.brand {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -31,79 +33,123 @@
     font-weight: 600;
     font-family: var(--font-serif);
     font-size: 1.1rem;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.logo:hover {
+    opacity: 0.8;
 }
 
 .version {
     font-family: var(--font-main);
     font-size: 9px;
     opacity: 0.5;
+    margin-left: 4px;
 }
 
 .nav-links {
     display: flex;
-    gap: var(--space-32);
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--color-ink);
     opacity: 0.6;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
 }
 
-.nav-links a.active,
 .nav-links a:hover {
     opacity: 1;
     color: var(--color-accent);
 }
 
-/* HAMBURGUESA MODERNO - Tres líneas animadas */
+.nav-links a.active {
+    opacity: 1;
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 1px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+app-theme-toggle {
+    display: flex;
+}
+
 .mobile-toggle {
     display: none;
     background: none;
     border: none;
     color: var(--color-ink);
-    font-family: var(--font-main);
     cursor: pointer;
     padding: 8px;
     width: 40px;
     height: 40px;
     position: relative;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
-/* Contenedor de las líneas */
+.mobile-toggle:hover {
+    background: rgba(179, 103, 155, 0.1);
+}
+
+.mobile-toggle:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 .hamburger-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     width: 100%;
     height: 100%;
 }
 
-/* Líneas del hamburguesa */
 .hamburger-line {
     width: 24px;
     height: 2px;
     background: var(--color-ink);
     border-radius: 1px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
-/* Animación: la línea superior rota */
-.menu-open .hamburger-line:nth-child(1) {
+.mobile-toggle.menu-open .hamburger-line:nth-child(1) {
     transform: rotate(45deg) translate(9px, 9px);
 }
 
-/* Animación: la línea del medio desaparece */
-.menu-open .hamburger-line:nth-child(2) {
+.mobile-toggle.menu-open .hamburger-line:nth-child(2) {
     opacity: 0;
     transform: translateX(-10px);
 }
 
-/* Animación: la línea inferior rota */
-.menu-open .hamburger-line:nth-child(3) {
+.mobile-toggle.menu-open .hamburger-line:nth-child(3) {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
@@ -116,10 +162,11 @@
     border-bottom: 1px solid var(--color-line);
     display: flex;
     flex-direction: column;
-    padding: var(--space-24) var(--margin-sides);
-    gap: var(--space-24);
+    padding: 24px var(--margin-sides);
+    gap: 0;
     animation: slideDown 0.3s ease-out;
     z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-menu a {
@@ -127,9 +174,14 @@
     color: var(--color-ink);
     font-size: 14px;
     font-weight: 500;
-    padding: 12px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--color-line);
     transition: all 0.2s ease;
+    display: block;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
 }
 
 .mobile-menu a:hover {
@@ -148,12 +200,73 @@
         transform: translateY(0);
     }
 }
+
 @media (max-width: 768px) {
+    .nav-bar {
+        gap: 16px;
+    }
+
     .nav-links {
         display: none;
     }
 
     .mobile-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
+    .logo {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-bar {
+        height: 56px;
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 0.95rem;
+    }
+
+    .version {
+        display: none;
+    }
+
+    .actions {
+        gap: 8px;
+    }
+
+    .mobile-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hamburger-line {
+        width: 20px;
+        height: 2px;
+    }
+
+    .mobile-menu {
+        padding: 16px;
+    }
+
+    .mobile-menu a {
+        padding: 12px 0;
+        font-size: 13px;
+    }
+}
+
+body.sustainable-mode .nav-shell {
+    background: var(--color-paper);
+    border-bottom-color: var(--color-line);
+}
+
+body.sustainable-mode .mobile-menu {
+    background: var(--color-paper);
+    border-bottom-color: var(--color-line);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

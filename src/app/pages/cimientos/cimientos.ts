@@ -21,7 +21,7 @@ export class Cimientos {
     { year: '2025', event: 'Código y Sistemas', detail: 'Construcción de estructuras digitales con propósito.' }
   ]);
 
-  toggleSustainable(): boolean {
+  toggleSustainable() {
     return this.ui.toggleSustainableMode();
   }
 }

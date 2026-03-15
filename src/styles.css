@@ -25,11 +25,9 @@
     --gradient-warm: linear-gradient(135deg, #f5f0e8 0%, #6e684a 100%);
     --gradient-soft: linear-gradient(135deg, #ede6d6 0%, #f5f0e8 100%);
 
-    /* ========== TIPOGRAFÍAS ========== */
     --font-main: 'JetBrains Mono', monospace;
     --font-serif: 'Fraunces', serif;
 
-    /* ========== SPACING ========== */
     --space-8: 8px;
     --space-16: 16px;
     --space-24: 24px;
@@ -37,15 +35,13 @@
     --space-48: 48px;
     --space-64: 64px;
 
-    /* ========== MÁRGENES RESPONSIVOS ========== */
     --margin-sides: 120px;
     --margin-sides-lg: 80px;
     --margin-sides-md: 48px;
     --margin-sides-sm: 20px;
-    --max-width: 100%;
+    --max-width: 1400px;
 }
 
-/* ========== MEDIA QUERIES ========== */
 @media (max-width: 1199px) {
     :root {
         --margin-sides: var(--margin-sides-lg);
@@ -64,7 +60,6 @@
     }
 }
 
-/* ========== BODY GLOBAL ========== */
 body {
     background-color: var(--color-paper);
     color: var(--color-ink);
@@ -72,7 +67,6 @@ body {
     margin: 0;
     transition: background-color 0.4s ease;
 
-    /* Textura de puntos (dotted paper) */
     background-image: radial-gradient(var(--color-line) 1.5px, transparent 1.5px);
     background-size: 24px 24px;
 }
@@ -83,7 +77,6 @@ h3 {
     font-family: var(--font-serif);
 }
 
-/* ========== MODO SOSTENIBLE ========== */
 body.sustainable-mode {
     --color-paper: #1a1915;
     --color-ink: #e8e3d8;
@@ -133,8 +126,6 @@ body.sustainable-mode {
     box-shadow: 0 8px 24px rgba(179, 103, 155, 0.3);
 }
 
-/* ========== BOTONES SECUNDARIOS ========== */
-
 .secondary-btn {
     display: inline-flex;
     align-items: center;
@@ -160,7 +151,6 @@ body.sustainable-mode {
     background: rgba(179, 103, 155, 0.05);
 }
 
-/* ========== TARJETAS/CARDS ========== */
 
 .card {
     border: 1px solid var(--color-line);
@@ -181,8 +171,6 @@ body.sustainable-mode {
     background: linear-gradient(135deg, var(--color-paper) 0%, rgba(179, 103, 155, 0.05) 100%);
 }
 
-/* ========== BADGES Y TAGS ========== */
-
 .tag,
 .badge {
     display: inline-block;
@@ -197,7 +185,6 @@ body.sustainable-mode {
     letter-spacing: 0.5px;
 }
 
-/* ========== SKILL BADGES ========== */
 
 .skill-badge {
     display: inline-block;
@@ -224,8 +211,6 @@ body.sustainable-mode {
         transform: translateY(0);
     }
 }
-
-/* ========== PROGRESS BAR ========== */
 
 .progress-container {
     position: relative;
@@ -266,8 +251,6 @@ body.sustainable-mode {
     font-family: var(--font-main);
 }
 
-/* ========== STATUS TAG ========== */
-
 .status-tag {
     display: inline-flex;
     align-items: center;
@@ -305,8 +288,6 @@ body.sustainable-mode {
     }
 }
 
-/* ========== MANIFESTO BOX ========== */
-
 .manifesto-box {
     display: flex;
     flex-direction: column;
@@ -329,8 +310,6 @@ body.sustainable-mode {
     color: var(--color-accent);
     font-weight: 600;
 }
-
-/* ========== CAJAS DE INFORMACIÓN ========== */
 
 .info-box {
     padding: 20px;
@@ -365,8 +344,6 @@ body.sustainable-mode {
     margin: 0;
 }
 
-/* ========== ENLACES Y ACCIONES ========== */
-
 a {
     color: var(--color-accent);
     text-decoration: none;
@@ -377,8 +354,6 @@ a:hover {
     opacity: 0.8;
     text-decoration: underline;
 }
-
-/* ========== ARROW ANIMATION ========== */
 
 .arrow {
     transition: transform 0.3s ease;
@@ -391,8 +366,6 @@ a:hover {
 .see-all:hover .arrow {
     transform: translateX(4px);
 }
-
-/* ========== TIMELINE/JOURNEY ========== */
 
 .journey-timeline {
     display: grid;
@@ -412,8 +385,6 @@ a:hover {
     min-width: 60px;
     text-align: center;
 }
-
-/* ========== UTILIDADES ========== */
 
 .text-center {
     text-align: center;
@@ -443,8 +414,6 @@ a:hover {
     gap: var(--space-24);
 }
 
-/* ========== RESPONSIVE ========== */
-
 @media (max-width: 768px) {
 
     .primary-btn,
@@ -462,8 +431,6 @@ a:hover {
         font-size: 10px;
     }
 }
-
-/* ========== MODO SOSTENIBLE - MEJORAS ESPECÍFICAS ========== */
 
 body.sustainable-mode .card {
     background: linear-gradient(135deg, var(--color-paper) 0%, rgba(179, 103, 155, 0.02) 100%);

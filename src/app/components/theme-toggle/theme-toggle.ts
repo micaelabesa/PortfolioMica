@@ -1,4 +1,3 @@
-// src/app/components/theme-toggle/theme-toggle.ts
 import { Component, inject, ChangeDetectionStrategy, computed } from '@angular/core';
 import { UI } from '../../services/ui';
 
@@ -9,19 +8,25 @@ import { UI } from '../../services/ui';
   styleUrl: './theme-toggle.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.sustainable-ui]': 'isSustainable()'
+    '[attr.aria-label]': '"Toggle theme"',
+    '[attr.role]': '"button"',
+    '[attr.tabindex]': '0',
+    '(click)': 'toggle()',
+    '(keydown.enter)': 'toggle()',
+    '(keydown.space)': 'toggle()'
   }
 })
 export class ThemeToggle {
-  private readonly uiService = inject(UI);
+  private readonly ui = inject(UI);
 
   // Declaración del signal derivado
-  readonly isSustainable = computed((): boolean => this.uiService.isSustainable());
+  readonly isSustainable = computed(() => this.ui.isSustainable());
+  readonly accentColor = computed(() => this.ui.accentColor);
 
   /**
    * Ejecuta el cambio de modo y retorna el estado final.
    */
-  toggle(): boolean {
-    return this.uiService.toggleSustainableMode();
+  toggle(): void {
+    this.ui.toggleSustainableMode();
   }
 }

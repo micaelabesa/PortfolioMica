@@ -24,9 +24,9 @@
 
     @if (isMenuOpen()) {
     <div class="mobile-menu">
-        <a routerLink="/cimientos" (click)="toggleMenu()">00_CIMIENTOS</a>
-        <a routerLink="/projects" (click)="toggleMenu()">01_ESTRUCTURAS</a>
-        <a routerLink="/contact" (click)="toggleMenu()">02_CONTACTO</a>
+        <a routerLink="/cimientos" (click)="closeMenu()">CIMIENTOS</a>
+        <a routerLink="/projects" (click)="closeMenu()">ESTRUCTURAS</a>
+        <a routerLink="/contact" (click)="closeMenu()">CONTACTO</a>
     </div>
     }
 </nav>

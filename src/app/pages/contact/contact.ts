@@ -71,14 +71,12 @@ export class Contact {
 
     const formData = this.contactForm.value;
 
-    // Enviar a la Vercel Function
     this.http.post('/api/contact', formData).subscribe({
       next: (response: any) => {
         this.isSubmitting.set(false);
         this.submitSuccess.set(true);
         this.contactForm.reset();
 
-        // Limpiar mensaje después de 5s
         setTimeout(() => {
           this.submitSuccess.set(false);
         }, 5000);
@@ -90,7 +88,6 @@ export class Contact {
           error.error?.error || 'Error al enviar el formulario'
         );
 
-        // Limpiar error después de 5s
         setTimeout(() => {
           this.submitError.set(false);
         }, 5000);
@@ -114,7 +111,7 @@ export class Contact {
     return this.contactForm.get('message');
   }
 
-  toggleSustainableMode(): boolean {
+  toggleSustainableMode(){
     return this.ui.toggleSustainableMode();
   }
 }

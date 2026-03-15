@@ -188,12 +188,10 @@ export class UI {
     /**
      * Alterna entre modo estándar y sostenible
      */
-    toggleSustainableMode(): boolean {
-        const newTheme = this.currentTheme() === 'standard' ? 'sustainable' : 'standard';
-        this.currentTheme.set(newTheme);
-        return this.isSustainable();
+    toggleSustainableMode(): void {
+    const newTheme = this.currentTheme() === 'standard' ? 'sustainable' : 'standard';
+    this.currentTheme.set(newTheme);
     }
-
     /**
      * Establece un tema específico
      */
@@ -205,13 +203,13 @@ export class UI {
      * Obtiene la configuración actual del tema
      */
     getCurrentThemeConfig(): ThemeConfig {
-        return this.themeConfig();
-    }
+    return this.themeConfig();
+  }
 
     /**
      * Retorna todas las configuraciones disponibles
      */
     getAvailableThemes(): ThemeConfig[] {
-        return Object.values(THEME_CONFIGS);
-    }
+    return Object.values(THEME_CONFIGS);
+  }
 }
