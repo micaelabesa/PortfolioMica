@@ -23,7 +23,7 @@
             <header class="hero-header">
                 <div class="status-tag">
                     <span class="pulse-dot"></span>
-                    STATUS: DESARROLLADORA FULL STACK // DISPONIBLE_2026
+                    STATUS: <app-word-carousel [words]="['DESARROLLADORA FULL STACK', 'DISPONIBLE_2026']" [wordInterval]="3000"></app-word-carousel>
                 </div>
 
         <p class="hero-greeting typing-text">
@@ -43,7 +43,7 @@
                 <h2 class="hero-subtitle">
                     Software
                     <span class="accent-text">sostenible</span>
-                    <span class="plus-sign">+</span>
+                    <span class="plus-sign"><i class="fa-solid fa-plus fa-beat-fade"></i></span>
                     <br>
                     Arquitectura <span class="accent-text">centrada en el Usuario</span>
                 </h2>
@@ -64,6 +64,10 @@
                     </a>
                     <a routerLink="/contact" class="secondary-btn">
                         <span>CONTACTO</span>
+                        <span class="arrow">↓</span>
+                    </a>
+                    <a (click)="scrollToSkills()" class="secondary-btn">
+                        <span>STACK & SKILLS</span>
                         <span class="arrow">↓</span>
                     </a>
                 </div>
@@ -118,7 +122,7 @@
 
 </section>
 
-<section class="skills-section">
+<section class="skills-section" id="skills-section">
     <div class="skills-header">
         <h2>HABILIDADES & COMPETENCIAS</h2>
         <p class="skills-subtitle">Stack técnico y soft skills desarrollados a través de la experiencia</p>

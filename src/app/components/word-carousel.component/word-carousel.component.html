@@ -1,0 +1,7 @@
+<span class="word-carousel">
+    @for (word of words(); let i = $index; track i) {
+    <span class="carousel-word" [style.--word-delay]="(i * wordInterval() / 1000) + 's'">
+        {{ word }}
+    </span>
+    }
+</span>

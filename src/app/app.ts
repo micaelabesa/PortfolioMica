@@ -20,11 +20,12 @@ export class App {
  
   private readonly alertService = inject(AlertService);
 
-  ngOnInit() {
+  constructor() {
+ 
   this.alertService.info(
     '🚧 Sitio en Construcción',
     'Este portfolio está siendo constantemente actualizado. ¡Gracias por tu paciencia!',
-    'Entendido'
-  );
+    'Entendido');
+    window.scrollTo(0, 0);
 }
 }

@@ -1,4 +1,6 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, signal, computed, inject, effect } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -79,19 +81,33 @@ import { Component, HostListener, signal } from '@angular/core';
   `]
 })
 export class ScrollToTopComponent {
-  isVisible = signal(false);
-  private scrollThreshold = 300;
+  private readonly router = inject(Router);
+  
+  scrollPosition = signal(0);
 
+  isVisible = computed(() => this.scrollPosition() > 300);
+ 
+  constructor() {
+  this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }, 100); 
+    });
+}
+ 
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    this.isVisible.set(scrollPosition > this.scrollThreshold);
+    const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
+    this.scrollPosition.set(currentScrollPosition);
   }
-
+ 
   scrollToTop(): void {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }
+  
 }

@@ -122,6 +122,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    min-width: 360px;
     width: fit-content;
     padding: 8px 12px;
     border: 1px solid var(--color-accent);
@@ -183,10 +184,10 @@
 .plus-sign {
     display: inline-block;
     flex-shrink: 0;
-    margin-left: 8px;
+    margin-left: 16px;
     color: var(--color-accent);
     font-weight: 700;
-    font-size: 0.9em;
+    font-size: 0.55em;
     white-space: nowrap;
     animation: rotate-subtle 3s ease-in-out infinite;
 }
@@ -227,7 +228,7 @@
     padding: 12px 24px;
     border-radius: 7px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;

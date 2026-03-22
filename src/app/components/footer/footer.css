@@ -151,8 +151,9 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
     align-items: center;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     margin-bottom: 0;
+    padding-bottom: 5px;
 }
 
 .footer-meta {
@@ -288,6 +289,7 @@
 
     .footer-actions {
         text-align: center;
+        font-size: 0.7rem;
     }
 }
 

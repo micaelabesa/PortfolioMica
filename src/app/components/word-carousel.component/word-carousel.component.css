@@ -1,0 +1,34 @@
+.word-carousel {
+    position: relative;
+    display: inline;
+    min-width: 0;
+}
+
+.carousel-word {
+    position: relative;
+    opacity: 0;
+    animation: fadeCarousel 9s ease-in-out infinite;
+    animation-delay: var(--word-delay, 0s);
+    white-space: nowrap;
+}
+@keyframes fadeCarousel {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    32% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

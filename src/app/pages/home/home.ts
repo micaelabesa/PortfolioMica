@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { UI } from '../../services/ui';
 import { ProyectosService } from '../../services/proyectos.service';
 import { CardTiltService } from '../../services/card-tilt-service';
+import { WordCarouselComponent } from '../../components/word-carousel.component/word-carousel.component';
 
 interface Project {
   id: number;
@@ -16,7 +17,7 @@ interface Project {
 
 @Component({
   selector: 'app-home',
-  imports: [ RouterLink ],
+  imports: [ RouterLink, WordCarouselComponent ],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,19 +47,13 @@ export class Home {
     });
   }
 
-  /**
-   * Inicializa la animación de scroll para las tarjetas de habilidades
-   * @returns boolean - true si se inicializó correctamente, false si no hay tarjetas
-   */
   private initSkillsScrollAnimation(): boolean {
     const skillCards = this.el.nativeElement.querySelectorAll('.skill-card');
 
-    // Si no hay tarjetas, retornar false
     if (!skillCards.length) {
       return false;
     }
 
-    // Crear Intersection Observer para detectar cuando las tarjetas entran en viewport
     const observer = new IntersectionObserver(
       (entries) => {
       entries.forEach(entry => {
@@ -127,4 +122,15 @@ export class Home {
   toggleSustainableMode(): void {
     this.ui.toggleSustainableMode();
   }
+
+  scrollToSkills(): void {
+  const skillsSection = document.getElementById('skills-section');
+  
+  if (skillsSection) {
+    skillsSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
 }
