@@ -4,12 +4,13 @@ import { Footer } from './components/footer/footer';
 import { Nav } from './components/nav/nav';
 import { AlertService } from './services/alertservice';
 import { ScrollToTopComponent } from "./components/scroll-to-top/scroll-to-top";
+import { CursorEffectComponent } from './components/cursor-effect.component/cursor-effect.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Footer, Nav, ScrollToTopComponent],
+  imports: [RouterOutlet, Footer, Nav, ScrollToTopComponent, CursorEffectComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush

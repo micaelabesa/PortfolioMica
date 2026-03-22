@@ -42,6 +42,17 @@
     --max-width: 1400px;
 }
 
+* {
+    cursor: none;
+    /* Ocultar cursor por defecto */
+}
+
+input,
+textarea {
+    cursor: text;
+    /* Excepto en inputs */
+}
+
 @media (max-width: 1199px) {
     :root {
         --margin-sides: var(--margin-sides-lg);
