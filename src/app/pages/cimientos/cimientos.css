@@ -17,11 +17,16 @@
     align-items: start;
 }
 
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .image-wrapper {
     position: relative;
     width: 100%;
     max-width: 350px;
-    /* En mobile: más pequeña */
 }
 
 .portrait {
@@ -44,6 +49,50 @@
     font-size: 9px;
     margin-top: 8px;
     opacity: 0.5;
+}
+
+.download-section {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: fit-content;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-accent);
+    border-radius: 7px;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex: auto;
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background: var(--color-accent);
+    color: #000;
+}
+
+.download-btn .icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .technical-label {
@@ -88,6 +137,14 @@
     .cimientos-container {
         padding: 64px var(--margin-sides);
     }
+
+    .left-section {
+        gap: 24px;
+    }
+
+    .download-section {
+        margin-top: 8px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -102,5 +159,9 @@
 
     .title {
         font-size: 1.6rem;
+    }
+
+    .download-btn {
+        max-width: 300px;
     }
 }

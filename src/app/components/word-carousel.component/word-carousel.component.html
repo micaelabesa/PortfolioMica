@@ -1,7 +1,23 @@
-<span class="word-carousel">
-    @for (word of words(); let i = $index; track i) {
-    <span class="carousel-word" [style.--word-delay]="(i * wordInterval() / 1000) + 's'">
+<span class="word-carousel-container">
+    <span class="width-reference" aria-hidden="true">
+        @for (word of words(); let i = $index; track i) {
+        @if (i === 0) {
         {{ word }}
+        }
+        }
+    </span>
+
+    @for (word of words(); let i = $index; track i) {
+    <span class="carousel-word" [class.exiting]="isWordExiting(i)" [class.entering]="isWordEntering(i)">
+        @for (letter of word.split(''); let letterIdx = $index; track letterIdx) {
+        <span class="letter" [style.--letter-delay]="letterIdx * 80 + 'ms'">
+            @if (letter === ' ') {
+            &nbsp;
+            } @else {
+            {{ letter }}
+            }
+        </span>
+        }
     </span>
     }
 </span>

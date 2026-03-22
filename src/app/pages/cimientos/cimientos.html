@@ -1,28 +1,42 @@
 <section class="cimientos-container">
     <div class="content-layout">
+        <div class="left-section">
+            <div class="image-wrapper">
+                <img 
+                ngSrc="images/foto_perfil.png" 
+                width="300" 
+                height="300" 
+                priority alt="Micaela - Arquitecta de Software"
+                class="portrait" />
+            </div>
 
-        <div class="image-wrapper">
-            <img 
-            ngSrc="images/foto_perfil.png" 
-            width="300" 
-            height="300" 
-            priority alt="Micaela - Arquitecta de Software"
-            class="portrait" />
-        </div>
-
-        <div class="text-content">
-            <span class="technical-label">ESTRATEGIA_DE_VIDA</span>
-            <h2 class="title">No solo escribo código, proyecto soluciones sostenibles.</h2>
-
-            <p class="bio">
-            Si los cimientos no son sólidos, la estética no sirve de nada. Aporto 10 años de profesionalismo multicultural y una
-            mentalidad constructiva: proyecto con el rigor de una arquitecta y ejecuto con la agilidad de una desarrolladora.
-            </p>
-
-            <div class="timeline">
-                <app-timeline></app-timeline>
+            <div class="download-section">
+                <a href="/Curriculum_MicaelaBesasso_2026.pdf" download="Curriculum_MicaelaBesasso_2026.pdf" class="download-btn">
+                    <span class="icon">📄</span>
+                    <span>DESCARGAR CV</span>
+                </a>
+            
+                <a href="/Bootcamp.pdf" download="Bootcamp.pdf" class="download-btn">
+                    <span class="icon">🎓</span>
+                    <span>DESCARGAR DIPLOMA</span>
+                </a>
             </div>
         </div>
 
+        <div class="right-section">
+            <div class="text-content">
+                <span class="technical-label">ESTRATEGIA_DE_VIDA</span>
+                <h2 class="title">No solo escribo código, proyecto soluciones sostenibles.</h2>
+
+                <p class="bio">
+                Si los cimientos no son sólidos, la estética no sirve de nada. Aporto 10 años de profesionalismo multicultural y una
+                mentalidad constructiva: proyecto con el rigor de una arquitecta y ejecuto con la agilidad de una desarrolladora.
+                </p>
+
+                <div class="timeline">
+                    <app-timeline></app-timeline>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

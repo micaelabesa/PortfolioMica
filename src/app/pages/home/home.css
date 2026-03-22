@@ -120,10 +120,13 @@
 
 .status-tag {
     display: inline-flex;
+    /* ← MANTENER inline-flex */
     align-items: center;
+    /* ← MANTENER para alinear */
     gap: 8px;
-    min-width: 360px;
+    /* ← MANTENER para espacio */
     width: fit-content;
+    /* ← MANTENER */
     padding: 8px 12px;
     border: 1px solid var(--color-accent);
     border-radius: 7px;

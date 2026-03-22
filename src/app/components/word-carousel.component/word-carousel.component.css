@@ -1,34 +1,67 @@
-.word-carousel {
+:host {
+    display: inline-block;
+}
+
+.word-carousel-container {
     position: relative;
-    display: inline;
-    min-width: 0;
+    display: inline-block;
+    min-height: 1.2em;
+}
+
+.width-reference {
+    display: inline-block;
+    visibility: hidden;
+    white-space: nowrap;
 }
 
 .carousel-word {
-    position: relative;
-    opacity: 0;
-    animation: fadeCarousel 9s ease-in-out infinite;
-    animation-delay: var(--word-delay, 0s);
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
     white-space: nowrap;
 }
-@keyframes fadeCarousel {
-    0% {
-        opacity: 0;
-    }
 
-    8% {
+.carousel-word.exiting {
+    display: inline-block;
+}
+
+.carousel-word.exiting .letter {
+    display: inline-block;
+    animation: exitLetter 150ms ease-in-out forwards;
+    animation-delay: var(--letter-delay);
+}
+
+.carousel-word.entering {
+    display: inline-block;
+}
+
+.carousel-word.entering .letter {
+    display: inline-block;
+    animation: enterLetter 150ms ease-in-out forwards;
+    animation-delay: calc(300ms + var(--letter-delay));
+}
+
+@keyframes exitLetter {
+    from {
         opacity: 1;
+        filter: blur(0px);
     }
 
-    32% {
+    to {
+        opacity: 0;
+        filter: blur(3px);
+    }
+}
+
+@keyframes enterLetter {
+    from {
+        opacity: 0;
+        filter: blur(3px);
+    }
+
+    to {
         opacity: 1;
-    }
-
-    40% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
+        filter: blur(0px);
     }
 }
