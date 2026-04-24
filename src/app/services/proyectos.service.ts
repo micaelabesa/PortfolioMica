@@ -32,6 +32,16 @@ export class ProyectosService {
       tags: ['Angular','TypeScript', 'FastAPI', 'MySQL', 'Web Components'],
       featured: false,
       link: '#'
+    },
+    {
+      id: 3,
+      year: '2026',
+      title: 'ROSITA CLERICI',
+      description: 'Simplificación de identidad corporativa y desarrollo web de alto rendimiento para organizar y digitalizar el amplio abanico de servicios de una experta local en las Baleares.',
+      tags: ['Next.js','TypeScript', 'Web Components'],
+      featured: true,
+      link: 'https://real-formentera.vercel.app/'
     }
   ]);
+
 }
