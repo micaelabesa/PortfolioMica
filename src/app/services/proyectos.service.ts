@@ -41,6 +41,15 @@ export class ProyectosService {
       tags: ['Next.js','TypeScript', 'Web Components'],
       featured: true,
       link: 'https://real-formentera.vercel.app/'
+    },
+    {
+      id: 4,
+      year: '2026',
+      title: 'Studio Baleares',
+      description: 'Estudio para restaurantes, cafés y anfitriones de Airbnb que quieren verse profesionales rápido sin conocimientos en diseño. Menús, QR, posts para redes, guías de bienvenida y kits de branding.',
+      tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe'],
+      featured: true,
+      link: 'https://studio-baleares.vercel.app/'
     }
   ]);
 
